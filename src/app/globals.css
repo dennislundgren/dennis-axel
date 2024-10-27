@@ -3,31 +3,47 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 19, 19, 19;
+  --foreground-dim-rgb: 70, 70, 70;
+  --background-rgb: 255, 255, 255;
+  --transition-time: 0.167s;
+  --highlight-rgb: 220, 220, 220;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 230, 230, 230;
+    --foreground-dim-rgb: 180, 180, 180;
+    --background-rgb: 19, 19, 19;
+    --highlight-rgb: 50, 50, 50;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
+  transition: color var(--transition-time), background var(--transition-time);
+}
+
+::selection {
+  background: rgb(var(--highlight-rgb));
+  color: rgb(var(--foreground-rgb));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .rotate {
+    animation: rotate 6s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
