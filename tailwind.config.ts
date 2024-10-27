@@ -9,9 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background-rgb)",
-        foreground: "var(--foreground-rgb)",
-        "foreground-dim": "var(--foreground-dim-rgb)",
+        background: "rgb(var(--background-rgb))",
+        "background-alt": "rgb(var(--background-alt-rgb))",
+        foreground: "rgb(var(--foreground-rgb))",
+        "foreground-dim": "rgb(var(--foreground-dim-rgb))",
       },
     },
   },

@@ -6,7 +6,7 @@ interface BodyProps {
 }
 
 const Body = ({ children, className = "" }: BodyProps) => {
-  return <p className={`${className}`}>{children}</p>;
+  return <p className={`${className} dark:opacity-[60%]`}>{children}</p>;
 };
 
 export default Body;

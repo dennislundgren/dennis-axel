@@ -2,6 +2,9 @@
 import Image from "next/image";
 import useSWR from "swr";
 import Body from "./UI/typography/Body";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import DynamicText from "./UI/typography/DynamicText";
 
 type SpotifyData = {
   isPlaying: boolean;
@@ -19,30 +22,49 @@ export default function CurrentlyPlaying() {
   const { data } = useSWR<SpotifyData>("/api/spotify", fetcher, {
     refreshInterval: 10000,
   });
+  const [artist, setArtist] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [album, setAlbum] = useState<string>("");
+  const [albumImageUrl, setAlbumImageUrl] = useState<string>("");
+  const [songUrl, setSongUrl] = useState<string>("");
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  if (!data || !data.isPlaying) {
-    return <p>Not playing anything right now.</p>;
-  }
+  useEffect(() => {
+    if (!data) return;
+    setArtist(data.artist);
+    setTitle(data.title);
+    setAlbum(data.album);
+    setAlbumImageUrl(data.albumImageUrl);
+    setSongUrl(data.songUrl);
+    setIsPlaying(data.isPlaying);
+  }, [data]);
 
   return (
-    <div className="flex gap-4 items-center">
-      <Image
-        src={data.albumImageUrl}
-        alt={data.album}
-        width={40}
-        height={40}
-        className="rounded-full rotate w-10 h-10 select-none"
-      />
+    <div className="flex gap-4 items-center max-w-md">
+      {isPlaying && albumImageUrl && (
+        <Image
+          src={albumImageUrl}
+          alt={album}
+          width={40}
+          height={40}
+          className="rounded-full rotate w-10 h-10 select-none"
+        />
+      )}
       <Body>
-        Lyssnar på:{" "}
-        <a
-          href={data.songUrl}
+        <DynamicText
+          text={isPlaying ? "Lyssnar på:" : "Lyssnar inte på något just nu"}
+        />{" "}
+        <motion.a
+          href={songUrl}
           className="hover:underline"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <strong>{data.title}</strong> av {data.artist}
-        </a>
+          <motion.strong>
+            {isPlaying && title && <DynamicText text={title} />}
+          </motion.strong>{" "}
+          {isPlaying && artist && <DynamicText text={"av " + artist} />}
+        </motion.a>
       </Body>
     </div>
   );
