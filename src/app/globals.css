@@ -37,6 +37,14 @@ body {
   .rotate {
     animation: rotate 6s linear infinite;
   }
+  .min-h-full-dynamic {
+    min-height: 100vh;
+  }
+  @supports (height: 100dvh) {
+    .min-h-full-dynamic {
+      min-height: 100dvh;
+    }
+  }
 }
 
 @keyframes rotate {

@@ -4,7 +4,7 @@ import Body from "@/components/UI/typography/Body";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 lg:p-24 gap-8">
+    <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
       <Card>
         <Body>Hej,</Body>
         <Body>
