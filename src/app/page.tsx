@@ -12,7 +12,7 @@ export default function Home() {
           i Stockholm. Just nu arbetar jag som frontend-utvecklare på{" "}
           <a
             href="https://perific.com"
-            className="hover:underline"
+            className="underline"
             target="_blank"
             rel="noopener noreferrer"
           >
