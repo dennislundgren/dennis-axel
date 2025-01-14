@@ -11,7 +11,7 @@ const DynamicText = ({ text }: DynamicTextProps) => {
   );
 
   useEffect(() => {
-    const duration = 50 / text.length ** 0.5;
+    const duration = 50 / text.length ** 0.75;
     const interval = setInterval(() => {
       let replacementLetter = " ";
       let replacementIndex = 0;

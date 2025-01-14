@@ -9,16 +9,8 @@ export default function Home() {
         <Body>Hej,</Body>
         <Body>
           Mitt namn är Dennis Axel Lundgren. Jag är en kreatör, född och uppväxt
-          i Stockholm. Just nu arbetar jag som frontend-utvecklare på{" "}
-          <a
-            href="https://perific.com"
-            className="underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Perific Technologies AB
-          </a>
-          .
+          i Stockholm. Just nu arbetar jag som frontend-utvecklare på Perific
+          Technologies AB.
         </Body>
         <Body>
           Jag drivs av avsiktligt skapandet för intuitiv interaktivitet.
