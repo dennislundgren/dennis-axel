@@ -8,5 +8,10 @@
     "listening": "Kuuntelen",
     "notListening": "En kuuntele mitään juuri nyt",
     "by": "tekijä"
+  },
+  "LanguageSelector": {
+    "swedish": "Ruotsi | Svenska",
+    "english": "Englanti | English",
+    "finnish": "Suomi | Suomi"
   }
 }

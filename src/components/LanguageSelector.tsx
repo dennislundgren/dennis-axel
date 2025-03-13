@@ -1,18 +1,24 @@
 "use client";
+import useDarkMode from "@/hooks/useDarkMode";
 import { Link } from "@/i18n/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Languages } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("LanguageSelector");
+  const path = usePathname();
+  const isDark = useDarkMode();
 
   const variants = {
     enter: {
       opacity: 1,
       y: 0,
-      backgroundColor: "rgba(var(--highlight-rgb), 1)",
-      transition: { staggerChildren: 0.167, delayChildren: 0.167 },
+      backgroundColor: "rgba(var(--background-alt-rgb), 1)",
+      transition: { staggerChildren: 0.05, delayChildren: 0.167 },
     },
     exit: {
       opacity: 0,
@@ -22,9 +28,11 @@ export default function LanguageSelector() {
   };
 
   const item = {
-    enter: { opacity: 1 },
+    enter: { opacity: isDark ? 0.6 : 1 },
     exit: { opacity: 0 },
   };
+
+  console.log({ path });
 
   return (
     <motion.aside className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4">
@@ -33,22 +41,22 @@ export default function LanguageSelector() {
         animate={{
           scale: isOpen ? 1.1 : 1,
           backgroundColor: isOpen
-            ? "rgba(var(--highlight-rgb), 1)"
-            : "rgba(var(--highlight-rgb), 0)",
+            ? "rgba(var(--background-alt-rgb), 1)"
+            : "rgba(var(--background-alt-rgb), 0)",
         }}
         whileHover={{
           scale: 1.1,
-          backgroundColor: "rgba(var(--highlight-rgb), 1)",
+          backgroundColor: "rgba(var(--background-alt-rgb), 1)",
         }}
         whileTap={{
           scale: 0.9,
-          backgroundColor: "rgba(var(--highlight-rgb), 0)",
+          backgroundColor: "rgba(var(--background-alt-rgb), 0)",
         }}
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
-        <Languages />
+        <Languages className="dark:opacity-60" />
       </motion.div>
       {isOpen && (
         <AnimatePresence>
@@ -59,20 +67,35 @@ export default function LanguageSelector() {
             exit="exit"
             variants={variants}
           >
-            <motion.div variants={item}>
-              <Link className="hover:underline" href="./en-GB">
-                English
-              </Link>
+            <motion.div
+              className={
+                path?.startsWith("/en-GB")
+                  ? "hidden dark:opacity-60"
+                  : "dark:opacity-60"
+              }
+              variants={item}
+            >
+              <Link href="./en-GB">{t("english")}</Link>
             </motion.div>
-            <motion.div variants={item}>
-              <Link className="hover:underline" href="./sv-SE">
-                Svenska
-              </Link>
+            <motion.div
+              className={
+                path?.startsWith("/sv-SE")
+                  ? "hidden dark:opacity-60"
+                  : "dark:opacity-60"
+              }
+              variants={item}
+            >
+              <Link href="./sv-SE">{t("swedish")}</Link>
             </motion.div>
-            <motion.div variants={item}>
-              <Link className="hover:underline" href="./fi-FI">
-                Suomi
-              </Link>
+            <motion.div
+              className={
+                path?.startsWith("/fi-FI")
+                  ? "hidden dark:opacity-60"
+                  : "dark:opacity-60"
+              }
+              variants={item}
+            >
+              <Link href="./fi-FI">{t("finnish")}</Link>
             </motion.div>
           </motion.div>
         </AnimatePresence>

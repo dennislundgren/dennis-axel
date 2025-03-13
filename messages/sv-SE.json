@@ -8,5 +8,10 @@
     "listening": "Lyssnar på",
     "notListening": "Lyssnar inte på något just nu",
     "by": "av"
+  },
+  "LanguageSelector": {
+    "swedish": "Svenska | Svenska",
+    "english": "Engelska | English",
+    "finnish": "Finska | Suomi"
   }
 }

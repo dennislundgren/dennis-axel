@@ -8,5 +8,10 @@
     "listening": "Listening to",
     "notListening": "Not listening to anything right now",
     "by": "by"
+  },
+  "LanguageSelector": {
+    "swedish": "Swedish | Svenska",
+    "english": "English | English",
+    "finnish": "Finnish | Suomi"
   }
 }
