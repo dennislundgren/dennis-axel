@@ -5,15 +5,16 @@ import Body from "./UI/typography/Body";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import DynamicText from "./UI/typography/DynamicText";
+import { useTranslations } from "next-intl";
 
-type SpotifyData = {
+interface SpotifyData {
   isPlaying: boolean;
   title: string;
   artist: string;
   album: string;
   albumImageUrl: string;
   songUrl: string;
-};
+}
 
 const fetcher = (url: string): Promise<SpotifyData> =>
   fetch(url).then((res) => res.json());
@@ -22,6 +23,7 @@ export default function CurrentlyPlaying() {
   const { data } = useSWR<SpotifyData>("/api/spotify", fetcher, {
     refreshInterval: 10000,
   });
+  const t = useTranslations("CurrentlyPlaying");
   const [artist, setArtist] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [album, setAlbum] = useState<string>("");
@@ -51,9 +53,7 @@ export default function CurrentlyPlaying() {
         />
       )}
       <Body>
-        <DynamicText
-          text={isPlaying ? "Lyssnar på:" : "Lyssnar inte på något just nu"}
-        />{" "}
+        <DynamicText text={isPlaying ? t("listening") : t("notListening")} />{" "}
         <motion.a
           href={songUrl}
           className="hover:underline"
@@ -63,7 +63,7 @@ export default function CurrentlyPlaying() {
           <motion.strong>
             {isPlaying && title && <DynamicText text={title} />}
           </motion.strong>{" "}
-          {isPlaying && artist && <DynamicText text={"av " + artist} />}
+          {isPlaying && artist && <DynamicText text={t("by") + " " + artist} />}
         </motion.a>
       </Body>
     </div>
