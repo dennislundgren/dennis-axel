@@ -1,45 +1,79 @@
-"use client";
 import Image from "next/image";
-import useSWR from "swr";
 import Body from "./UI/typography/Body";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import DynamicText from "./UI/typography/DynamicText";
-import { useTranslations } from "next-intl";
 
-interface SpotifyData {
-  isPlaying: boolean;
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  songUrl: string;
+const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!;
+const client_secret = process.env.NEXT_SPOTIFY_CLIENT_SECRET!;
+const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN!;
+
+const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+const NOW_PLAYING_ENDPOINT =
+  "https://api.spotify.com/v1/me/player/currently-playing";
+
+async function getAccessToken(): Promise<{ access_token: string }> {
+  const response = await fetch(TOKEN_ENDPOINT, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${Buffer.from(
+        `${client_id}:${client_secret}`
+      ).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      grant_type: "refresh_token",
+      refresh_token,
+    }),
+  });
+
+  return response.json();
 }
 
-const fetcher = (url: string): Promise<SpotifyData> =>
-  fetch(url).then((res) => res.json());
+async function fetchSpotifyData() {
+  const { access_token } = await getAccessToken();
 
-export default function CurrentlyPlaying() {
-  const { data } = useSWR<SpotifyData>("/api/spotify", fetcher, {
-    refreshInterval: 10000,
+  const response = await fetch(NOW_PLAYING_ENDPOINT, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
   });
-  const t = useTranslations("CurrentlyPlaying");
-  const [artist, setArtist] = useState<string>("");
-  const [title, setTitle] = useState<string>("");
-  const [album, setAlbum] = useState<string>("");
-  const [albumImageUrl, setAlbumImageUrl] = useState<string>("");
-  const [songUrl, setSongUrl] = useState<string>("");
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (!data) return;
-    setArtist(data.artist);
-    setTitle(data.title);
-    setAlbum(data.album);
-    setAlbumImageUrl(data.albumImageUrl);
-    setSongUrl(data.songUrl);
-    setIsPlaying(data.isPlaying);
-  }, [data]);
+  if (response.status === 204 || response.status > 400) {
+    return { isPlaying: false };
+  }
+
+  const song = await response.json();
+
+  return {
+    isPlaying: song.is_playing,
+    title: song.item.name,
+    artist: song.item.artists
+      .map((artist: { name: string }) => artist.name)
+      .join(", "),
+    album: song.item.album.name,
+    albumImageUrl: song.item.album.images[0].url,
+    songUrl: song.item.external_urls.spotify,
+  };
+}
+
+export default async function CurrentlyPlaying({
+  c: t,
+}: {
+  c: (key: string) => string;
+}) {
+  let spotifyData: any = null;
+  try {
+    spotifyData = await fetchSpotifyData();
+  } catch (error) {
+    console.error("Error fetching Spotify data:", error);
+  }
+
+  const {
+    isPlaying = false,
+    title = "",
+    artist = "",
+    album = "",
+    albumImageUrl = "",
+    songUrl = "",
+  } = spotifyData || {};
 
   return (
     <div className="flex gap-4 items-center max-w-md">
@@ -53,18 +87,17 @@ export default function CurrentlyPlaying() {
         />
       )}
       <Body>
-        <DynamicText text={isPlaying ? t("listening") : t("notListening")} />{" "}
-        <motion.a
+        {isPlaying ? t("listening") : t("notListening")}{" "}
+        <a
           href={songUrl}
           className="hover:underline"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <motion.strong>
-            {isPlaying && title && <DynamicText text={title} />}
-          </motion.strong>{" "}
-          {isPlaying && artist && <DynamicText text={t("by") + " " + artist} />}
-        </motion.a>
+          <strong>{isPlaying && title && <>{title}</>}</strong>
+          {" " + t("by") + " "}
+          {isPlaying && artist && <>{artist}</>}
+        </a>
       </Body>
     </div>
   );
