@@ -4,6 +4,8 @@ import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 import { useTranslations } from "next-intl";
 
+export const dynamic = "force-static";
+
 export default function Home() {
   const t = useTranslations("HomePage");
   const c = useTranslations("CurrentlyPlaying");
