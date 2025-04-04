@@ -32,8 +32,6 @@ export default function LanguageSelector() {
     exit: { opacity: 0 },
   };
 
-  console.log({ path });
-
   return (
     <motion.aside className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4">
       <motion.div

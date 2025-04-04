@@ -95,7 +95,7 @@ export default async function CurrentlyPlaying({
           rel="noopener noreferrer"
         >
           <strong>{isPlaying && title && <>{title}</>}</strong>
-          {" " + t("by") + " "}
+          {isPlaying ? " " + t("by") + " " : ""}
           {isPlaying && artist && <>{artist}</>}
         </a>
       </Body>
