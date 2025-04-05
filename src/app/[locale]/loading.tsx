@@ -1,6 +1,5 @@
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
-import { div } from "framer-motion/client";
 
 export default function Loading() {
   return (

@@ -1,8 +1,8 @@
 "use client";
 import useDarkMode from "@/hooks/useDarkMode";
 import { Link } from "@/i18n/navigation";
-import { AnimatePresence, motion } from "framer-motion";
 import { Languages } from "lucide-react";
+import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -57,46 +57,44 @@ export default function LanguageSelector() {
         <Languages className="dark:opacity-60" />
       </motion.div>
       {isOpen && (
-        <AnimatePresence>
+        <motion.div
+          className="flex flex-col p-2 rounded-lg items-end gap-1"
+          initial="exit"
+          animate="enter"
+          exit="exit"
+          variants={variants}
+        >
           <motion.div
-            className="flex flex-col p-2 rounded-lg items-end gap-1"
-            initial="exit"
-            animate="enter"
-            exit="exit"
-            variants={variants}
+            className={
+              path?.startsWith("/en-GB")
+                ? "hidden dark:opacity-60"
+                : "dark:opacity-60"
+            }
+            variants={item}
           >
-            <motion.div
-              className={
-                path?.startsWith("/en-GB")
-                  ? "hidden dark:opacity-60"
-                  : "dark:opacity-60"
-              }
-              variants={item}
-            >
-              <Link href="./en-GB">{t("english")}</Link>
-            </motion.div>
-            <motion.div
-              className={
-                path?.startsWith("/sv-SE")
-                  ? "hidden dark:opacity-60"
-                  : "dark:opacity-60"
-              }
-              variants={item}
-            >
-              <Link href="./sv-SE">{t("swedish")}</Link>
-            </motion.div>
-            <motion.div
-              className={
-                path?.startsWith("/fi-FI")
-                  ? "hidden dark:opacity-60"
-                  : "dark:opacity-60"
-              }
-              variants={item}
-            >
-              <Link href="./fi-FI">{t("finnish")}</Link>
-            </motion.div>
+            <Link href="./en-GB">{t("english")}</Link>
           </motion.div>
-        </AnimatePresence>
+          <motion.div
+            className={
+              path?.startsWith("/sv-SE")
+                ? "hidden dark:opacity-60"
+                : "dark:opacity-60"
+            }
+            variants={item}
+          >
+            <Link href="./sv-SE">{t("swedish")}</Link>
+          </motion.div>
+          <motion.div
+            className={
+              path?.startsWith("/fi-FI")
+                ? "hidden dark:opacity-60"
+                : "dark:opacity-60"
+            }
+            variants={item}
+          >
+            <Link href="./fi-FI">{t("finnish")}</Link>
+          </motion.div>
+        </motion.div>
       )}
     </motion.aside>
   );

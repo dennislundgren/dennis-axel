@@ -1,8 +1,10 @@
 import CurrentlyPlaying from "@/components/CurrentlyPlaying";
-import LanguageSelector from "@/components/LanguageSelector";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+
+const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
 
 export default function Home() {
   const t = useTranslations("HomePage");
