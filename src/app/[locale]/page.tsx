@@ -3,6 +3,7 @@ import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
 
@@ -17,7 +18,10 @@ export default function Home() {
         <Body>{t("statement1")}</Body>
         <Body>{t("statement2")}</Body>
       </Card>
-      <CurrentlyPlaying c={c} />
+      <Suspense fallback={<Body>{c("notListening")}</Body>}>
+        <CurrentlyPlaying c={c} />
+      </Suspense>
+
       <LanguageSelector />
     </main>
   );

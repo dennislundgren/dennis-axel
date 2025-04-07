@@ -33,7 +33,16 @@ export default function LanguageSelector() {
   };
 
   return (
-    <motion.aside className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4">
+    <motion.aside
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+        backgroundColor: "rgba(var(--background-alt-rgb), 0)",
+      }}
+      className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4"
+    >
       <motion.div
         className="p-2 rounded-lg bg-white cursor-pointer flex-col-reverse flex w-fit"
         animate={{
