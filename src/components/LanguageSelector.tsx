@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
-  const [prefetchedRoutes, setPrefetchedRoutes] = useState<string[]>([]);
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
   const isDark = useDarkMode();
@@ -36,17 +35,11 @@ export default function LanguageSelector() {
 
   useEffect(() => {
     if (isOpen) {
-      const routesToPrefetch = ["/en-GB", "/sv-SE", "/fi-FI"].filter(
-        (route) => !prefetchedRoutes.includes(route)
-      );
-
-      routesToPrefetch.forEach((route) => {
-        router.prefetch(route);
-      });
-
-      setPrefetchedRoutes((prev) => [...prev, ...routesToPrefetch]);
+      router.prefetch("/en-GB");
+      router.prefetch("/sv-SE");
+      router.prefetch("/fi-FI");
     }
-  }, [isOpen, router, prefetchedRoutes]);
+  }, [isOpen, router]);
 
   return (
     <motion.aside
