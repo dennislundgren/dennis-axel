@@ -4,14 +4,15 @@ import { Link } from "@/i18n/navigation";
 import { Languages } from "lucide-react";
 import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
   const isDark = useDarkMode();
+  const router = useRouter();
 
   const variants = {
     enter: {
@@ -31,6 +32,14 @@ export default function LanguageSelector() {
     enter: { opacity: isDark ? 0.6 : 1 },
     exit: { opacity: 0 },
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      router.prefetch("/en-GB");
+      router.prefetch("/sv-SE");
+      router.prefetch("/fi-FI");
+    }
+  }, [isOpen, router]);
 
   return (
     <motion.aside
@@ -81,9 +90,7 @@ export default function LanguageSelector() {
             }
             variants={item}
           >
-            <Link prefetch href="./en-GB">
-              {t("english")}
-            </Link>
+            <Link href="./en-GB">{t("english")}</Link>
           </motion.div>
           <motion.div
             className={
@@ -93,9 +100,7 @@ export default function LanguageSelector() {
             }
             variants={item}
           >
-            <Link prefetch href="./sv-SE">
-              {t("swedish")}
-            </Link>
+            <Link href="./sv-SE">{t("swedish")}</Link>
           </motion.div>
           <motion.div
             className={
@@ -105,9 +110,7 @@ export default function LanguageSelector() {
             }
             variants={item}
           >
-            <Link prefetch href="./fi-FI">
-              {t("finnish")}
-            </Link>
+            <Link href="./fi-FI">{t("finnish")}</Link>
           </motion.div>
         </motion.div>
       )}
