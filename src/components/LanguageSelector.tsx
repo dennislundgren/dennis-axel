@@ -81,7 +81,9 @@ export default function LanguageSelector() {
             }
             variants={item}
           >
-            <Link href="./en-GB">{t("english")}</Link>
+            <Link prefetch href="./en-GB">
+              {t("english")}
+            </Link>
           </motion.div>
           <motion.div
             className={
@@ -91,7 +93,9 @@ export default function LanguageSelector() {
             }
             variants={item}
           >
-            <Link href="./sv-SE">{t("swedish")}</Link>
+            <Link prefetch href="./sv-SE">
+              {t("swedish")}
+            </Link>
           </motion.div>
           <motion.div
             className={
@@ -101,7 +105,9 @@ export default function LanguageSelector() {
             }
             variants={item}
           >
-            <Link href="./fi-FI">{t("finnish")}</Link>
+            <Link prefetch href="./fi-FI">
+              {t("finnish")}
+            </Link>
           </motion.div>
         </motion.div>
       )}

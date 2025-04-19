@@ -1,15 +1,15 @@
 import CurrentlyPlaying from "@/components/CurrentlyPlaying";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
 
-export default function Home() {
-  const t = useTranslations("HomePage");
-  const c = useTranslations("CurrentlyPlaying");
+export default async function Home() {
+  const t = await getTranslations("HomePage");
+  const c = await getTranslations("CurrentlyPlaying");
 
   return (
     <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
