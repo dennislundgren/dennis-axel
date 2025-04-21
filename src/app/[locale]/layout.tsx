@@ -22,11 +22,13 @@ async function LocaleLayoutContent({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
+  console.log("TS: ", Date.now(), " Locale layout content init...");
   // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  console.log("TS: ", Date.now(), " Locale layout content return...");
 
   return <NextIntlClientProvider>{children}</NextIntlClientProvider>;
 }
@@ -38,6 +40,7 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
+  console.log("TS: ", Date.now(), " Locale layout page...");
   return (
     <html lang="en">
       <body className={noto.className}>

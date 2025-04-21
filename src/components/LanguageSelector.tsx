@@ -35,9 +35,9 @@ export default function LanguageSelector() {
 
   useEffect(() => {
     if (isOpen) {
-      router.prefetch("/en-GB");
-      router.prefetch("/sv-SE");
-      router.prefetch("/fi-FI");
+      router.prefetch("/en");
+      router.prefetch("/sv");
+      router.prefetch("/fi");
     }
   }, [isOpen, router]);
 
@@ -84,33 +84,33 @@ export default function LanguageSelector() {
         >
           <motion.div
             className={
-              path?.startsWith("/en-GB")
+              path?.startsWith("/en")
                 ? "hidden dark:opacity-60"
                 : "dark:opacity-60"
             }
             variants={item}
           >
-            <Link href="./en-GB">{t("english")}</Link>
+            <Link href="./en">{t("english")}</Link>
           </motion.div>
           <motion.div
             className={
-              path?.startsWith("/sv-SE")
+              path?.startsWith("/sv")
                 ? "hidden dark:opacity-60"
                 : "dark:opacity-60"
             }
             variants={item}
           >
-            <Link href="./sv-SE">{t("swedish")}</Link>
+            <Link href="./sv">{t("swedish")}</Link>
           </motion.div>
           <motion.div
             className={
-              path?.startsWith("/fi-FI")
+              path?.startsWith("/fi")
                 ? "hidden dark:opacity-60"
                 : "dark:opacity-60"
             }
             variants={item}
           >
-            <Link href="./fi-FI">{t("finnish")}</Link>
+            <Link href="./fi">{t("finnish")}</Link>
           </motion.div>
         </motion.div>
       )}

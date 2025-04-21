@@ -8,9 +8,11 @@ import { Suspense } from "react";
 const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
 
 export default async function Home() {
+  console.log("TS: ", Date.now(), " Home page...");
   const t = await getTranslations("HomePage");
   const c = await getTranslations("CurrentlyPlaying");
 
+  console.log("TS: ", Date.now(), " Translations fetched...");
   return (
     <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
       <Card>
