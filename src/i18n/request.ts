@@ -10,8 +10,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
-  console.log("TS: ", Date.now(), " Request config locale: ", locale);
-
   return {
     locale,
     messages: messages[locale],

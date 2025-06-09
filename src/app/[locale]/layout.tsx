@@ -8,6 +8,13 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import "./../globals.css";
 
+export async function generateStaticParams() {
+  // Generate static params for all locales defined in the routing
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
+}
+
 const noto = Noto_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,15 +27,13 @@ async function LocaleLayoutContent({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  console.log("TS: ", Date.now(), " Locale layout content init...");
   // Ensure that the incoming `locale` is valid
-  const { locale } = params;
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
-  console.log("TS: ", Date.now(), " Locale layout content return...");
 
   return <NextIntlClientProvider>{children}</NextIntlClientProvider>;
 }
@@ -38,7 +43,7 @@ export default function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   return (
     <html lang="en">
