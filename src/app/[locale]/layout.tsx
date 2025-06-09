@@ -24,7 +24,7 @@ async function LocaleLayoutContent({
 }) {
   console.log("TS: ", Date.now(), " Locale layout content init...");
   // Ensure that the incoming `locale` is valid
-  const { locale } = await params;
+  const { locale } = params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -40,7 +40,6 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  console.log("TS: ", Date.now(), " Locale layout page...");
   return (
     <html lang="en">
       <body className={noto.className}>
