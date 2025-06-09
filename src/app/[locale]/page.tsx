@@ -1,9 +1,17 @@
 import CurrentlyPlaying from "@/components/CurrentlyPlaying";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
+import { routing } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+
+export async function generateStaticParams() {
+  // Generate static params for all locales defined in the routing
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
+}
 
 const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
 

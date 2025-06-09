@@ -75,30 +75,32 @@ export default async function CurrentlyPlaying({
     songUrl = "",
   } = spotifyData || {};
 
-  return (
-    <div className="flex gap-4 items-center max-w-md">
-      {isPlaying && albumImageUrl && (
-        <Image
-          src={albumImageUrl}
-          alt={album}
-          width={40}
-          height={40}
-          className="rounded-full rotate w-10 h-10 select-none"
-        />
-      )}
-      <Body>
-        {isPlaying ? t("listening") : t("notListening")}{" "}
-        <a
-          href={songUrl}
-          className="hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <strong>{isPlaying && title && <>{title}</>}</strong>
-          {isPlaying ? " " + t("by") + " " : ""}
-          {isPlaying && artist && <>{artist}</>}
-        </a>
-      </Body>
-    </div>
-  );
+  if (isPlaying)
+    return (
+      <div className="flex gap-4 items-center max-w-md">
+        {isPlaying && albumImageUrl && (
+          <Image
+            src={albumImageUrl}
+            alt={album}
+            width={40}
+            height={40}
+            className="rounded-full rotate w-10 h-10 select-none"
+          />
+        )}
+        <Body>
+          {isPlaying ? t("listening") : " "}
+          <a
+            href={songUrl}
+            className="hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <strong>{isPlaying && title && <>{title}</>}</strong>
+            {isPlaying ? " " + t("by") + " " : ""}
+            {isPlaying && artist && <>{artist}</>}
+          </a>
+        </Body>
+      </div>
+    );
+  return null;
 }

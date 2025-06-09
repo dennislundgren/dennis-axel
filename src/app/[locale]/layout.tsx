@@ -20,7 +20,7 @@ async function LocaleLayoutContent({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
   console.log("TS: ", Date.now(), " Locale layout content init...");
   // Ensure that the incoming `locale` is valid
@@ -38,7 +38,7 @@ export default function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
   console.log("TS: ", Date.now(), " Locale layout page...");
   return (
