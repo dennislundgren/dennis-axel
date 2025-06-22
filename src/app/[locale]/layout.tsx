@@ -1,11 +1,8 @@
-import Card from "@/components/UI/Card";
-import Body from "@/components/UI/typography/Body";
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { Noto_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import "./../globals.css";
 
 type Locales = (typeof routing.locales)[number];
@@ -48,17 +45,7 @@ export default async function LocaleLayout({
   return (
     <html lang={(await params).locale}>
       <body className={noto.className}>
-        <Suspense
-          fallback={
-            <div className="flex min-h-full-dynamic items-center justify-center">
-              <Card>
-                <Body>Loading...</Body>
-              </Card>
-            </div>
-          }
-        >
-          <LocaleLayoutContent params={params}>{children}</LocaleLayoutContent>
-        </Suspense>
+        <LocaleLayoutContent params={params}>{children}</LocaleLayoutContent>
       </body>
     </html>
   );

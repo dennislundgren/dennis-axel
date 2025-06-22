@@ -1,4 +1,3 @@
-import CurrentlyPlaying from "@/components/CurrentlyPlaying";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 import { getTranslations } from "next-intl/server";
@@ -18,11 +17,17 @@ export default async function Home() {
         <Body>{t("statement1")}</Body>
         <Body>{t("statement2")}</Body>
       </Card>
-      <Suspense>
+      {/* <Suspense>
         <CurrentlyPlaying c={c} />
-      </Suspense>
+      </Suspense> */}
 
-      <Suspense>
+      <Suspense
+        fallback={
+          <aside className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4">
+            <Body>Loading language selector...</Body>
+          </aside>
+        }
+      >
         <LanguageSelector />
       </Suspense>
     </main>
