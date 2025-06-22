@@ -10,8 +10,8 @@
     "by": "tekijä"
   },
   "LanguageSelector": {
-    "swedish": "Ruotsi | Svenska",
-    "english": "Englanti | English",
-    "finnish": "Suomi | Suomi"
+    "sv-SE": "Ruotsi | Svenska",
+    "en-GB": "Englanti | English",
+    "fi-FI": "Suomi | Suomi"
   }
 }

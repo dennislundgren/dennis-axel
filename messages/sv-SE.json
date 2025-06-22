@@ -10,8 +10,8 @@
     "by": "av"
   },
   "LanguageSelector": {
-    "swedish": "Svenska | Svenska",
-    "english": "Engelska | English",
-    "finnish": "Finska | Suomi"
+    "sv-SE": "Svenska | Svenska",
+    "en-GB": "Engelska | English",
+    "fi-FI": "Finska | Suomi"
   }
 }
