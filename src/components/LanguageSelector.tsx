@@ -1,3 +1,5 @@
+"use client";
+
 import useDarkMode from "@/hooks/useDarkMode";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";

@@ -44,7 +44,9 @@ export default async function Home({
         <CurrentlyPlaying c={c} />
       </Suspense>
 
-      <LanguageSelector />
+      <Suspense>
+        <LanguageSelector />
+      </Suspense>
     </main>
   );
 }
