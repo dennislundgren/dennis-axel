@@ -1,10 +1,10 @@
+import CurrentlyPlaying from "@/components/CurrentlyPlaying";
+import LanguageSelector from "@/components/LanguageSelector";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 import { Locales } from "@/types/global";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import dynamic from "next/dynamic";
-
-const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
+import { Suspense } from "react";
 
 export async function generateMetadata({
   params,
@@ -12,6 +12,8 @@ export async function generateMetadata({
   params: Promise<{ locale: Locales }>;
 }) {
   const { locale } = await params;
+  // Enable static rendering
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return {
@@ -38,9 +40,9 @@ export default async function Home({
         <Body>{t("statement1")}</Body>
         <Body>{t("statement2")}</Body>
       </Card>
-      {/* <Suspense>
+      <Suspense>
         <CurrentlyPlaying c={c} />
-      </Suspense> */}
+      </Suspense>
 
       <LanguageSelector />
     </main>

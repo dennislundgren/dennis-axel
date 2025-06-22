@@ -1,5 +1,3 @@
-"use client";
-
 import useDarkMode from "@/hooks/useDarkMode";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -85,9 +83,7 @@ export default function LanguageSelector() {
               }
               variants={item}
             >
-              <Link prefetch={false} href={`./${locale}`}>
-                {t(locale)}
-              </Link>
+              <Link href={`./${locale}`}>{t(locale)}</Link>
             </motion.div>
           ))}
         </motion.div>
