@@ -34,6 +34,9 @@ async function fetchSpotifyData() {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
+    next: {
+      revalidate: 60, // Revalidate every 60 seconds
+    },
   });
 
   if (response.status === 204 || response.status > 400) {

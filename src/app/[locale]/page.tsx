@@ -18,11 +18,13 @@ export default async function Home() {
         <Body>{t("statement1")}</Body>
         <Body>{t("statement2")}</Body>
       </Card>
-      <Suspense fallback={<Body>{c("notListening")}</Body>}>
+      <Suspense>
         <CurrentlyPlaying c={c} />
       </Suspense>
 
-      <LanguageSelector />
+      <Suspense>
+        <LanguageSelector />
+      </Suspense>
     </main>
   );
 }

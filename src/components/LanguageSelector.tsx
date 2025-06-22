@@ -6,7 +6,7 @@ import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export default function LanguageSelector() {
@@ -14,7 +14,6 @@ export default function LanguageSelector() {
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
   const isDark = useDarkMode();
-  const router = useRouter();
 
   const variants = {
     enter: {
