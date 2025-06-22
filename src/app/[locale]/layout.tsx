@@ -8,8 +8,9 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import "./../globals.css";
 
+type Locales = (typeof routing.locales)[number];
+
 export async function generateStaticParams() {
-  // Generate static params for all locales defined in the routing
   return routing.locales.map((locale) => ({
     locale,
   }));
@@ -27,9 +28,8 @@ async function LocaleLayoutContent({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locales }>;
 }) {
-  // Ensure that the incoming `locale` is valid
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -38,15 +38,15 @@ async function LocaleLayoutContent({
   return <NextIntlClientProvider>{children}</NextIntlClientProvider>;
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locales }>;
 }) {
   return (
-    <html lang="en">
+    <html lang={(await params).locale}>
       <body className={noto.className}>
         <Suspense
           fallback={
