@@ -1,11 +1,13 @@
 "use client";
+
 import useDarkMode from "@/hooks/useDarkMode";
 import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,14 +34,6 @@ export default function LanguageSelector() {
     enter: { opacity: isDark ? 0.6 : 1 },
     exit: { opacity: 0 },
   };
-
-  useEffect(() => {
-    if (isOpen) {
-      router.prefetch("/en");
-      router.prefetch("/sv");
-      router.prefetch("/fi");
-    }
-  }, [isOpen, router]);
 
   return (
     <motion.aside
@@ -82,36 +76,19 @@ export default function LanguageSelector() {
           exit="exit"
           variants={variants}
         >
-          <motion.div
-            className={
-              path?.startsWith("/en")
-                ? "hidden dark:opacity-60"
-                : "dark:opacity-60"
-            }
-            variants={item}
-          >
-            <Link href="./en">{t("english")}</Link>
-          </motion.div>
-          <motion.div
-            className={
-              path?.startsWith("/sv")
-                ? "hidden dark:opacity-60"
-                : "dark:opacity-60"
-            }
-            variants={item}
-          >
-            <Link href="./sv">{t("swedish")}</Link>
-          </motion.div>
-          <motion.div
-            className={
-              path?.startsWith("/fi")
-                ? "hidden dark:opacity-60"
-                : "dark:opacity-60"
-            }
-            variants={item}
-          >
-            <Link href="./fi">{t("finnish")}</Link>
-          </motion.div>
+          {routing.locales.map((locale) => (
+            <motion.div
+              key={locale}
+              className={
+                path?.startsWith(`/${locale}`)
+                  ? "hidden dark:opacity-60"
+                  : "dark:opacity-60"
+              }
+              variants={item}
+            >
+              <Link href={`./${locale}`}>{t(locale)}</Link>
+            </motion.div>
+          ))}
         </motion.div>
       )}
     </motion.aside>
