@@ -57,8 +57,7 @@ export default async function LocaleLayout({
             </div>
           }
         >
-          {(await params).locale}
-          {/* <LocaleLayoutContent params={params}>{children}</LocaleLayoutContent> */}
+          <LocaleLayoutContent params={params}>{children}</LocaleLayoutContent>
         </Suspense>
       </body>
     </html>
