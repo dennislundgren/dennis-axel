@@ -85,7 +85,9 @@ export default function LanguageSelector() {
               }
               variants={item}
             >
-              <Link href={`./${locale}`}>{t(locale)}</Link>
+              <Link prefetch={false} href={`./${locale}`}>
+                {t(locale)}
+              </Link>
             </motion.div>
           ))}
         </motion.div>
