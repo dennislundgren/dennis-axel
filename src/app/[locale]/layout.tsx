@@ -1,6 +1,7 @@
 import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { Noto_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "./../globals.css";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   description: "Dennis Axel är en mästare på att programmera hemsidor.",
 };
 
-async function LocaleLayoutContent({
+export default async function LocaleLayout({
   children,
   params,
 }: {
@@ -32,20 +33,12 @@ async function LocaleLayoutContent({
     notFound();
   }
 
-  return <NextIntlClientProvider>{children}</NextIntlClientProvider>;
-}
+  setRequestLocale(locale);
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: Locales }>;
-}) {
   return (
-    <html lang={(await params).locale}>
+    <html lang={locale}>
       <body className={noto.className}>
-        <LocaleLayoutContent params={params}>{children}</LocaleLayoutContent>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>;
       </body>
     </html>
   );

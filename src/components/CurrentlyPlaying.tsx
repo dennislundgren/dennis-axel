@@ -47,13 +47,13 @@ async function fetchSpotifyData() {
 
   return {
     isPlaying: song.is_playing,
-    title: song.item.name,
-    artist: song.item.artists
+    title: song.item?.name,
+    artist: song.item?.artists
       .map((artist: { name: string }) => artist.name)
       .join(", "),
-    album: song.item.album.name,
-    albumImageUrl: song.item.album.images[0].url,
-    songUrl: song.item.external_urls.spotify,
+    album: song.item?.album.name,
+    albumImageUrl: song.item?.album.images[0].url,
+    songUrl: song.item?.external_urls.spotify,
   };
 }
 

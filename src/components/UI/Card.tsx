@@ -1,7 +1,7 @@
 import * as motion from "motion/react-client";
 import React from "react";
 
-const Card = ({ children }: { children: React.ReactNode }) => {
+export default function Card({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial={{
@@ -13,11 +13,9 @@ const Card = ({ children }: { children: React.ReactNode }) => {
           duration: 1,
         },
       }}
-      className="transition-colors max-w-md p-4 shadow-lg rounded-lg bg-background-alt border-foreground-dim border dark:border-transparent dark:shadow-none flex flex-col gap-4"
+      className="transition-colors max-w-md p-4 shadow-lg rounded-lg bg-[rgb(var(--background-alt-rgb))] border-foreground-dim border dark:border-transparent dark:shadow-none flex flex-col gap-4"
     >
       {children}
     </motion.div>
   );
-};
-
-export default Card;
+}

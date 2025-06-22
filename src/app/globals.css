@@ -5,8 +5,9 @@
   --foreground-dim-rgb: 70, 70, 70;
   --background-rgb: 255, 255, 255;
   --background-alt-rgb: 255, 255, 255;
-  --transition-time: 0.167s;
   --highlight-rgb: 240, 240, 240;
+
+  --transition-time: 0.167s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +18,16 @@
     --background-alt-rgb: 27, 27, 27;
     --highlight-rgb: 33, 33, 33;
   }
+}
+
+@theme {
+  --color-foreground: rgb(var(--foreground-rgb));
+  --color-foreground-dim: rgb(var(--foreground-dim-rgb));
+  --color-background: rgb(var(--background-rgb));
+  --color-background-alt: rgb(var(--background-alt-rgb));
+  --color-highlight: rgb(var(--highlight-rgb));
+  --color-text: var(--color-foreground);
+  --color-text-dim: var(--color-foreground-dim);
 }
 
 body {

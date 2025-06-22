@@ -1,12 +1,33 @@
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
-import { getTranslations } from "next-intl/server";
+import { Locales } from "@/types/global";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
 const LanguageSelector = dynamic(() => import("@/components/LanguageSelector"));
 
-export default async function Home() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locales }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return {
+    title: t("title"),
+  };
+}
+
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: Locales }>;
+}) {
+  const { locale } = await params;
+
+  // Enable static rendering
+  setRequestLocale(locale);
   const t = await getTranslations("HomePage");
   const c = await getTranslations("CurrentlyPlaying");
 
@@ -21,15 +42,7 @@ export default async function Home() {
         <CurrentlyPlaying c={c} />
       </Suspense> */}
 
-      <Suspense
-        fallback={
-          <aside className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4">
-            <Body>Loading language selector...</Body>
-          </aside>
-        }
-      >
-        <LanguageSelector />
-      </Suspense>
+      <LanguageSelector />
     </main>
   );
 }
