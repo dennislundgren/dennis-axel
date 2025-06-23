@@ -24,7 +24,7 @@
   --color-foreground: rgb(var(--foreground-rgb));
   --color-foreground-dim: rgb(var(--foreground-dim-rgb));
   --color-background: rgb(var(--background-rgb));
-  --color-background-alt: rgb(var(--background-alt-rgb));
+  --color-background-alt: rgba(var(--background-alt-rgb), 0.1);
   --color-highlight: rgb(var(--highlight-rgb));
   --color-text: var(--color-foreground);
   --color-text-dim: var(--color-foreground-dim);
@@ -43,6 +43,15 @@ body {
 }
 
 @layer utilities {
+  .bg-blur {
+    background: rgba(var(--background-rgb), 0.16);
+    backdrop-filter: blur(66px);
+  }
+  .noise {
+    background-size: cover;
+    background-position: center;
+    background-image: url("../../public/images/noise.svg");
+  }
   .text-balance {
     text-wrap: balance;
   }

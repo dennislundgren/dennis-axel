@@ -1,3 +1,4 @@
+import Background from "@/components/Background";
 import { routing } from "@/i18n/routing";
 import { Locales } from "@/types/global";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -32,6 +33,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={noto.className}>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>;
+        <Background />
       </body>
     </html>
   );
