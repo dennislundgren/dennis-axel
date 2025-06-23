@@ -31,7 +31,6 @@ export default async function Home({
   // Enable static rendering
   setRequestLocale(locale);
   const t = await getTranslations("HomePage");
-  const c = await getTranslations("CurrentlyPlaying");
 
   return (
     <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
@@ -41,7 +40,7 @@ export default async function Home({
         <Body>{t("statement2")}</Body>
       </Card>
       <Suspense>
-        <CurrentlyPlaying c={c} />
+        <CurrentlyPlaying />
       </Suspense>
 
       <Suspense>

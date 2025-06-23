@@ -9,9 +9,6 @@ export default function Card({ children }: { children: React.ReactNode }) {
       }}
       animate={{
         opacity: 1,
-        transition: {
-          duration: 1,
-        },
       }}
       className="transition-colors max-w-md p-4 shadow-lg rounded-lg bg-[rgb(var(--background-alt-rgb))] border-foreground-dim border dark:border-transparent dark:shadow-none flex flex-col gap-4"
     >
