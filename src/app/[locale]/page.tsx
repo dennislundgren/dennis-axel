@@ -3,6 +3,7 @@ import LanguageSelector from "@/components/LanguageSelector";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 import { Locales } from "@/types/global";
+import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 
@@ -10,7 +11,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locales }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   // Enable static rendering
   setRequestLocale(locale);
@@ -18,6 +19,18 @@ export async function generateMetadata({
 
   return {
     title: t("title"),
+    description: t("description"),
+    authors: {
+      name: "Dennis Axel Lundgren",
+    },
+    creator: "Dennis Axel Lundgren",
+    alternates: {
+      canonical: `https://dennisaxel.com/${locale}`,
+      languages: {
+        "x-default": "https://dennisaxel.com",
+        [locale]: `https://dennisaxel.com/${locale}`,
+      },
+    },
   };
 }
 

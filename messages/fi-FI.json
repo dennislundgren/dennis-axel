@@ -14,5 +14,8 @@
     "en-GB": "Englanti | English",
     "fi-FI": "Suomi | Suomi"
   },
-  "Metadata": { "title": "dennis axel | Suomi" }
+  "Metadata": {
+    "title": "dennis axel | Suomi",
+    "description": "Dennis Axel Lundgren on frontend-kehittäjä ja luoja, joka asuu Tukholmassa, Ruotsissa. Hän luo intuitiivisia ja interaktiivisia kokemuksia."
+  }
 }

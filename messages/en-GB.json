@@ -14,5 +14,8 @@
     "en-GB": "English | English",
     "fi-FI": "Finnish | Suomi"
   },
-  "Metadata": { "title": "dennis axel | English" }
+  "Metadata": {
+    "title": "dennis axel | English",
+    "description": "Dennis Axel Lundgren is a frontend developer and creator based in Stockholm, Sweden. He creates intuitive and interactive experiences."
+  }
 }

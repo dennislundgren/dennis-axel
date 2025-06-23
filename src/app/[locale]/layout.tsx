@@ -1,5 +1,4 @@
 import { routing } from "@/i18n/routing";
-import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Noto_Sans } from "next/font/google";
@@ -15,11 +14,6 @@ export async function generateStaticParams() {
 }
 
 const noto = Noto_Sans({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Dennis Axel",
-  description: "Dennis Axel är en mästare på att programmera hemsidor.",
-};
 
 export default async function LocaleLayout({
   children,
