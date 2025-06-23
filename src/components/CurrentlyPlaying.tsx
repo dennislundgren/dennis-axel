@@ -78,7 +78,7 @@ export default async function CurrentlyPlaying({
     songUrl = "",
   } = spotifyData || {};
 
-  if (isPlaying)
+  if (isPlaying && title != "")
     return (
       <div className="flex gap-4 items-center max-w-md">
         {isPlaying && albumImageUrl && (
