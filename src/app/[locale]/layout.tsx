@@ -32,7 +32,8 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={noto.className}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>;
+        <NextIntlClientProvider key={locale}>{children}</NextIntlClientProvider>
+
         <Background />
       </body>
     </html>

@@ -32,6 +32,13 @@ export async function generateMetadata({
         [locale]: `https://dennisaxel.com/${locale}`,
       },
     },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      url: `https://dennisaxel.com/${locale}`,
+      siteName: "Dennis Axel Lundgren",
+      type: "website",
+    },
   };
 }
 
