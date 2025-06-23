@@ -30,7 +30,7 @@ export default function LanguageSelector() {
   };
 
   const item = {
-    enter: { opacity: isDark ? 0.6 : 1 },
+    enter: { opacity: isDark ? 0.75 : 1 },
     exit: { opacity: 0 },
   };
 
@@ -78,11 +78,7 @@ export default function LanguageSelector() {
           {routing.locales.map((locale) => (
             <motion.div
               key={locale}
-              className={
-                path?.startsWith(`/${locale}`)
-                  ? "hidden dark:opacity-75"
-                  : "dark:opacity-75"
-              }
+              className={path?.startsWith(`/${locale}`) ? "hidden" : ""}
               variants={item}
             >
               <Link href={`./${locale}`}>{t(locale)}</Link>

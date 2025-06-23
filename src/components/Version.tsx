@@ -2,7 +2,7 @@ import Meta from "@/components/UI/typography/Meta";
 import { getAppVersion } from "@/lib/version";
 import { History, Rocket } from "lucide-react";
 
-export default async function Version() {
+export default function Version() {
   const version = getAppVersion() || "unknown";
   const buildDate = process.env.NEXT_PUBLIC_BUILD_DATE || "unknown";
 

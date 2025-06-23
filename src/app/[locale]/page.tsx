@@ -61,9 +61,7 @@ export default async function Home({
         <LanguageSelector />
       </Suspense>
 
-      <Suspense>
-        <Version />
-      </Suspense>
+      <Version />
     </main>
   );
 }
