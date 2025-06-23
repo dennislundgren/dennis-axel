@@ -51,5 +51,6 @@ export async function GET() {
     album: song.item?.album.name,
     albumImageUrl: song.item?.album.images[0].url,
     songUrl: song.item?.external_urls.spotify,
+    playingType: song.currently_playing_type,
   });
 }

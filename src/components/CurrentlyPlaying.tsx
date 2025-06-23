@@ -7,7 +7,15 @@ import { useEffect, useState } from "react";
 import Body from "./UI/typography/Body";
 
 export default function CurrentlyPlaying() {
-  const [spotifyData, setSpotifyData] = useState<any>(null);
+  const [spotifyData, setSpotifyData] = useState<{
+    isPlaying: boolean;
+    title: string;
+    artist: string;
+    album: string;
+    albumImageUrl: string;
+    songUrl: string;
+    playingType?: string;
+  } | null>(null);
   const [hide, setHide] = useState(false);
   const t = useTranslations("CurrentlyPlaying");
 
@@ -42,9 +50,42 @@ export default function CurrentlyPlaying() {
     album = "",
     albumImageUrl = "",
     songUrl = "",
+    playingType = "",
   } = spotifyData || {};
 
   if (!isPlaying) return null;
+
+  if (isPlaying && playingType === "episode")
+    return (
+      <motion.div
+        initial={{
+          opacity: 0,
+          marginTop: "-5rem",
+        }}
+        animate={
+          hide
+            ? {
+                opacity: 0,
+                marginTop: "-4.5rem",
+              }
+            : {
+                opacity: 1,
+                marginTop: 0,
+                transition: {
+                  duration: 1,
+                  ease: "easeIn",
+                  marginTop: {
+                    duration: 0.33,
+                    ease: "easeOut",
+                  },
+                },
+              }
+        }
+        className="flex gap-4 items-center max-w-md"
+      >
+        <Body>{t("listening")} podcast</Body>
+      </motion.div>
+    );
 
   return (
     <motion.div
