@@ -2,6 +2,7 @@ import CurrentlyPlaying from "@/components/CurrentlyPlaying";
 import LanguageSelector from "@/components/LanguageSelector";
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
+import Version from "@/components/Version";
 import { Locales } from "@/types/global";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -58,6 +59,10 @@ export default async function Home({
 
       <Suspense>
         <LanguageSelector />
+      </Suspense>
+
+      <Suspense>
+        <Version />
       </Suspense>
     </main>
   );

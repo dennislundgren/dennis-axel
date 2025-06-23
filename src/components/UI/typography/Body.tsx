@@ -1,12 +1,5 @@
-import React from "react";
+import { TextProps } from "@/types/global";
 
-interface BodyProps {
-  children: React.ReactNode;
-  className?: string;
+export default function Body({ children, className = "" }: TextProps) {
+  return <p className={`${className} dark:opacity-75`}>{children}</p>;
 }
-
-const Body = ({ children, className = "" }: BodyProps) => {
-  return <p className={`${className} dark:opacity-[60%]`}>{children}</p>;
-};
-
-export default Body;

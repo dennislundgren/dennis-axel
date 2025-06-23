@@ -65,7 +65,7 @@ export default function LanguageSelector() {
           setIsOpen(!isOpen);
         }}
       >
-        <Languages className="dark:opacity-60" />
+        <Languages className="dark:opacity-75" />
       </motion.div>
       {isOpen && (
         <motion.div
@@ -80,8 +80,8 @@ export default function LanguageSelector() {
               key={locale}
               className={
                 path?.startsWith(`/${locale}`)
-                  ? "hidden dark:opacity-60"
-                  : "dark:opacity-60"
+                  ? "hidden dark:opacity-75"
+                  : "dark:opacity-75"
               }
               variants={item}
             >

@@ -1,11 +1,10 @@
 import { routing } from "@/i18n/routing";
+import { Locales } from "@/types/global";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { Noto_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "./../globals.css";
-
-type Locales = (typeof routing.locales)[number];
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({

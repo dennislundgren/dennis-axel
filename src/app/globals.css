@@ -13,10 +13,10 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 230, 230, 230;
-    --foreground-dim-rgb: 180, 180, 180;
+    --foreground-dim-rgb: 215, 215, 215;
     --background-rgb: 18, 18, 18;
     --background-alt-rgb: 27, 27, 27;
-    --highlight-rgb: 33, 33, 33;
+    --highlight-rgb: 135, 135, 135;
   }
 }
 
@@ -34,11 +34,12 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
   transition: color var(--transition-time), background var(--transition-time);
+  overflow: hidden;
 }
 
 ::selection {
   background: rgb(var(--highlight-rgb));
-  color: rgb(var(--foreground-rgb));
+  color: rgb(var(--foreground-dim-rgb));
 }
 
 @layer utilities {

@@ -1,12 +1,5 @@
-import React from "react";
+import { TextProps } from "@/types/global";
 
-interface H2Props {
-  children: React.ReactNode;
-  className?: string;
-}
-
-const H2 = ({ children, className = "" }: H2Props) => {
+export default function H2({ children, className = "" }: TextProps) {
   return <h2 className={`${className}`}>{children}</h2>;
-};
-
-export default H2;
+}
