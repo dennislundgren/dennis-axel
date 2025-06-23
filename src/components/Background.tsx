@@ -3,7 +3,7 @@ import useIsTouch from "@/hooks/useIsTouch";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useEffect, useState } from "react";
 
-const maskSize = 1200;
+const maskSize = 1440;
 
 export default function Background() {
   const [isTouching, setIsTouching] = useState(false);
@@ -63,16 +63,25 @@ export default function Background() {
   return (
     <motion.div
       style={{
-        opacity: isTouch ? (isTouching ? 1 : 0) : 1,
-        transition: "opacity 0.3s ease-out",
-        WebkitMaskPosition: maskPosition,
-        WebkitMaskImage: `radial-gradient(circle ${
-          maskSize / 2
-        }px at center, white -0%, transparent 100%)`,
+        WebkitMaskImage: `linear-gradient(to top, transparent, rgb(var(--background-alt-rgb)) 20%, rgb(var(--background-alt-rgb)) 80%, transparent 100%)`,
         WebkitMaskRepeat: "no-repeat",
-        WebkitMaskSize: `${maskSize}px ${maskSize}px`,
+        WebkitMaskSize: "100% 100%",
       }}
-      className="noise w-full h-full absolute inset-0 z-[-1]"
-    />
+      className="w-full h-full absolute inset-0 z-[-1]"
+    >
+      <motion.div
+        style={{
+          opacity: isTouch ? (isTouching ? 1 : 0) : 1,
+          transition: "opacity 0.5s ease-out",
+          WebkitMaskPosition: maskPosition,
+          WebkitMaskImage: `radial-gradient(circle ${
+            maskSize / 2
+          }px at center, rgb(var(--background-alt-rgb)) -0%, transparent 100%)`,
+          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskSize: `${maskSize}px ${maskSize}px`,
+        }}
+        className="noise w-full h-full absolute inset-0 z-[-1]"
+      />
+    </motion.div>
   );
 }
