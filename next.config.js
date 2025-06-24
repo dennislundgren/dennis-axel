@@ -17,7 +17,9 @@ const nextConfig = {
     ],
   },
   env: {
-    BUILD_DATE: process.env.BUILD_DATE,
+    NEXT_PUBLIC_BUILD_DATE: new Date().toLocaleDateString("se-SV", {
+      formatMatcher: "basic",
+    }),
   },
 };
 
