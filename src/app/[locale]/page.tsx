@@ -1,12 +1,8 @@
+import Content from "@/components/Content";
 import CurrentlyPlaying from "@/components/CurrentlyPlaying";
-import LanguageSelector from "@/components/LanguageSelector";
-import Card from "@/components/UI/Card";
-import Body from "@/components/UI/typography/Body";
-import Version from "@/components/Version";
 import { Locales } from "@/types/global";
 import { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Suspense } from "react";
 
 export async function generateMetadata({
   params,
@@ -14,7 +10,6 @@ export async function generateMetadata({
   params: Promise<{ locale: Locales }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  // Enable static rendering
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
@@ -49,26 +44,12 @@ export default async function Home({
 }) {
   const { locale } = await params;
 
-  // Enable static rendering
   setRequestLocale(locale);
-  const t = await getTranslations("HomePage");
 
   return (
     <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
-      <Card>
-        <Body>{t("title")},</Body>
-        <Body>{t("statement1")}</Body>
-        <Body>{t("statement2")}</Body>
-      </Card>
-      <Suspense>
-        <CurrentlyPlaying />
-      </Suspense>
-
-      <Suspense>
-        <LanguageSelector />
-      </Suspense>
-
-      <Version />
+      <Content />
+      <CurrentlyPlaying />
     </main>
   );
 }

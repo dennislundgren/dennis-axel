@@ -2,7 +2,8 @@
   "HomePage": {
     "title": "Hei",
     "statement1": "Nimeni on Dennis Axel Lundgren. Olen luoja, syntynyt ja kasvanut Tukholmassa. Tällä hetkellä työskentelen frontend-kehittäjänä Perific Technologies AB:lla.",
-    "statement2": "Minua ohjaa tarkoituksellinen luominen intuitiiviseen vuorovaikutukseen."
+    "statement2": "Minua ohjaa tarkoituksellinen luominen intuitiiviseen vuorovaikutukseen.",
+    "psycho": "Olet ihan hullu, kun käytät näyttöjä noin."
   },
   "CurrentlyPlaying": {
     "listening": "Kuuntelen",

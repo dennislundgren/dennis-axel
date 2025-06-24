@@ -1,4 +1,6 @@
 import Background from "@/components/Background";
+import LanguageSelector from "@/components/LanguageSelector";
+import Version from "@/components/Version";
 import { routing } from "@/i18n/routing";
 import { Locales } from "@/types/global";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -32,8 +34,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={noto.className}>
-        <NextIntlClientProvider key={locale}>{children}</NextIntlClientProvider>
-        <Background />
+        <NextIntlClientProvider>
+          {children}
+          <Background />
+          <LanguageSelector />
+          <Version />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

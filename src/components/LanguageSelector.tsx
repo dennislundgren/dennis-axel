@@ -1,12 +1,12 @@
 "use client";
 
+import Surface from "@/components/UI/Surface";
 import useDarkMode from "@/hooks/useDarkMode";
-import { Link } from "@/i18n/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import * as motion from "motion/react-client";
-import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function LanguageSelector() {
@@ -14,12 +14,13 @@ export default function LanguageSelector() {
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
   const isDark = useDarkMode();
+  const router = useRouter();
+  const currentLocale = useLocale();
 
   const variants = {
     enter: {
       opacity: 1,
       y: 0,
-      backgroundColor: "rgba(var(--background-alt-rgb), 1)",
       transition: { staggerChildren: 0.05, delayChildren: 0.167 },
     },
     exit: {
@@ -41,25 +42,19 @@ export default function LanguageSelector() {
       }}
       animate={{
         opacity: 1,
-        backgroundColor: "rgba(var(--background-alt-rgb), 0)",
       }}
       className="fixed bottom-4 right-4 lg:bottom-8 lg:right-8 z-50 flex flex-col-reverse items-end gap-4"
     >
       <motion.div
-        className="p-2 rounded-lg bg-white cursor-pointer flex-col-reverse flex w-fit"
+        className="p-2 rounded-lg cursor-pointer flex-col-reverse flex w-fit"
         animate={{
           scale: isOpen ? 1.1 : 1,
-          backgroundColor: isOpen
-            ? "rgba(var(--background-alt-rgb), 1)"
-            : "rgba(var(--background-alt-rgb), 0)",
         }}
         whileHover={{
           scale: 1.1,
-          backgroundColor: "rgba(var(--background-alt-rgb), 1)",
         }}
         whileTap={{
           scale: 0.9,
-          backgroundColor: "rgba(var(--background-alt-rgb), 0)",
         }}
         onClick={() => {
           setIsOpen(!isOpen);
@@ -75,15 +70,28 @@ export default function LanguageSelector() {
           exit="exit"
           variants={variants}
         >
-          {routing.locales.map((locale) => (
-            <motion.div
-              key={locale}
-              className={path?.startsWith(`/${locale}`) ? "hidden" : ""}
-              variants={item}
-            >
-              <Link href={`./${locale}`}>{t(locale)}</Link>
-            </motion.div>
-          ))}
+          <Surface className="px-3 py-2">
+            {routing.locales.map((targetLocale) => (
+              <motion.div
+                key={targetLocale}
+                className={
+                  currentLocale === targetLocale
+                    ? "cursor-pointer hidden"
+                    : "cursor-pointer"
+                }
+                variants={item}
+                onClick={() => {
+                  setIsOpen(false);
+                  router.replace(path, { locale: targetLocale });
+                }}
+                whileHover={{
+                  textDecoration: "underline",
+                }}
+              >
+                {t(targetLocale)}
+              </motion.div>
+            ))}
+          </Surface>
         </motion.div>
       )}
     </motion.aside>

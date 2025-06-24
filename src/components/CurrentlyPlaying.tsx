@@ -1,22 +1,26 @@
 "use client";
 
+import useIsPsycho from "@/hooks/useIsPsycho";
 import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Body from "./UI/typography/Body";
+interface SpotifyData {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  album: string;
+  albumImageUrl: string;
+  songUrl: string;
+  playingType?: string;
+}
 
 export default function CurrentlyPlaying() {
-  const [spotifyData, setSpotifyData] = useState<{
-    isPlaying: boolean;
-    title: string;
-    artist: string;
-    album: string;
-    albumImageUrl: string;
-    songUrl: string;
-    playingType?: string;
-  } | null>(null);
+  const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
   const [hide, setHide] = useState(false);
+  const isPsycho = useIsPsycho();
+
   const t = useTranslations("CurrentlyPlaying");
 
   useEffect(() => {
@@ -53,7 +57,7 @@ export default function CurrentlyPlaying() {
     playingType = "",
   } = spotifyData || {};
 
-  if (!isPlaying) return null;
+  if (!isPlaying || isPsycho) return null;
 
   if (isPlaying && playingType === "episode")
     return (
