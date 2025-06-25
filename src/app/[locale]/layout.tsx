@@ -6,7 +6,6 @@ import { Locales } from "@/types/global";
 import { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Noto_Sans } from "next/font/google";
 import { notFound } from "next/navigation";
 import "./../globals.css";
 
@@ -48,8 +47,6 @@ export async function generateMetadata({
   };
 }
 
-const noto = Noto_Sans({ subsets: ["latin"] });
-
 export default async function LocaleLayout({
   children,
   params,
@@ -66,7 +63,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={noto.className}>
+      <body>
         <NextIntlClientProvider>
           {children}
           <Background />

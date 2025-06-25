@@ -1,16 +1,10 @@
-"use client";
-
-import Card from "@/components/UI/Card";
+import Card from "@/components/Card";
 import Body from "@/components/UI/typography/Body";
-import useIsPsycho from "@/hooks/useIsPsycho";
 import { useTranslations } from "next-intl";
 
-/** _client component_ */
+/** _server component_ */
 export default function Content() {
-  const isPsycho = useIsPsycho();
   const t = useTranslations("HomePage");
-
-  if (isPsycho) return <Body>{t("psycho")}</Body>;
 
   return (
     <Card>

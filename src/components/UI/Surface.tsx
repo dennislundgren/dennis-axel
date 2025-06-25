@@ -8,7 +8,7 @@ export default function Surface({
 }) {
   return (
     <div
-      className={`transition-colors shadow-lg rounded-lg border-foreground-dim border dark:border-transparent dark:shadow-none bg-blur ${className}`}
+      className={`transition shadow-lg rounded-lg border-foreground-dim border dark:border-transparent dark:shadow-none bg-blur ${className}`}
     >
       {children}
     </div>

@@ -3,7 +3,6 @@
 import Body from "@/components/UI/typography/Body";
 import useIsPsycho from "@/hooks/useIsPsycho";
 import fetcher from "@/lib/fetcher";
-import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import useSWR from "swr";
@@ -20,7 +19,7 @@ interface SpotifyData {
 /** _client component_ */
 export default function CurrentlyPlaying() {
   const { data: spotifyData } = useSWR<SpotifyData>("/api/spotify", fetcher, {
-    refreshInterval: 1000,
+    refreshInterval: 30000,
   });
 
   const isPsycho = useIsPsycho();
@@ -40,34 +39,16 @@ export default function CurrentlyPlaying() {
   if (isPsycho) return null;
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        marginTop: "-5rem",
+    <div
+      style={{
+        opacity: isPlaying ? 1 : 0,
       }}
-      animate={
-        !isPlaying
-          ? {
-              opacity: 0,
-              marginTop: "-4.5rem",
-            }
-          : {
-              opacity: 1,
-              marginTop: 0,
-              transition: {
-                duration: 1,
-                ease: "easeIn",
-                marginTop: {
-                  duration: 0.33,
-                  ease: "easeOut",
-                },
-              },
-            }
-      }
-      className="flex gap-4 items-center max-w-md"
+      className="transition-slow flex gap-4 items-center max-w-md opacity-0 absolute bottom-[-4rem] left-0 w-full justify-center"
     >
       {isPlaying && albumImageUrl && (
         <Image
+          loading="lazy"
+          fetchPriority="low"
           src={albumImageUrl}
           alt={album}
           width={40}
@@ -94,6 +75,6 @@ export default function CurrentlyPlaying() {
           </a>
         ) : null}
       </Body>
-    </motion.div>
+    </div>
   );
 }
