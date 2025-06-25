@@ -9,6 +9,7 @@ import * as motion from "motion/react-client";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
+/** _client component_ */
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("LanguageSelector");

@@ -1,19 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
+/** _client component_ */
 export default function useIsPsycho() {
-  const [isPsycho, setIsPsycho] = useState(false);
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
+}
 
-  useEffect(() => {
-    const match = window.matchMedia("(max-height: 348px)");
-    setIsPsycho(match.matches);
+function subscribe(callback: () => void) {
+  const match = window.matchMedia("(max-height: 348px)");
+  match.addEventListener("change", callback);
+  return () => match.removeEventListener("change", callback);
+}
 
-    const handler = (e: MediaQueryListEvent) => setIsPsycho(e.matches);
-    match.addEventListener("change", handler);
-
-    return () => match.removeEventListener("change", handler);
-  }, []);
-
-  return isPsycho;
+function getSnapshot() {
+  return window.matchMedia("(max-height: 348px)").matches;
 }

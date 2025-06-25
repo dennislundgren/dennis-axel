@@ -24,25 +24,32 @@ async function getAccessToken(): Promise<{ access_token: string }> {
   return response.json();
 }
 
+let cachedSpotifyData: any = null;
+let cachedAt = 0;
+const CACHE_DURATION = 60 * 1000;
+
 export async function GET() {
+  const now = Date.now();
+  if (cachedSpotifyData && now - cachedAt < CACHE_DURATION)
+    return Response.json(cachedSpotifyData);
+
   const { access_token } = await getAccessToken();
 
   const response = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
-    next: {
-      revalidate: 60, // Revalidate every 60 seconds
-    },
   });
 
   if (response.status === 204 || response.status > 400) {
-    return Response.json({ isPlaying: false });
+    cachedSpotifyData = { isPlaying: false };
+    cachedAt = now;
+    return Response.json(cachedSpotifyData);
   }
 
   const song = await response.json();
 
-  return Response.json({
+  cachedSpotifyData = {
     isPlaying: song.is_playing,
     title: song.item?.name,
     artist: song.item?.artists
@@ -52,5 +59,9 @@ export async function GET() {
     albumImageUrl: song.item?.album.images[0].url,
     songUrl: song.item?.external_urls.spotify,
     playingType: song.currently_playing_type,
-  });
+  };
+
+  cachedAt = now;
+
+  return Response.json(cachedSpotifyData);
 }

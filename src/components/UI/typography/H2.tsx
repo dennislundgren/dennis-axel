@@ -1,5 +1,6 @@
 import { TextProps } from "@/types/global";
 
+/** _server component_ */
 export default function H2({ children, className = "" }: TextProps) {
   return <h2 className={`${className}`}>{children}</h2>;
 }

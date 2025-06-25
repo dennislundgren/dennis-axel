@@ -5,6 +5,7 @@ import Body from "@/components/UI/typography/Body";
 import useIsPsycho from "@/hooks/useIsPsycho";
 import { useTranslations } from "next-intl";
 
+/** _client component_ */
 export default function Content() {
   const isPsycho = useIsPsycho();
   const t = useTranslations("HomePage");

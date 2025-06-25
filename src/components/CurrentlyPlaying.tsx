@@ -16,6 +16,7 @@ interface SpotifyData {
   playingType?: string;
 }
 
+/** _client component_ */
 export default function CurrentlyPlaying() {
   const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
   const [hide, setHide] = useState(false);

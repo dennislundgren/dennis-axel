@@ -1,5 +1,6 @@
 import BackgroundTouchMask from "@/components/Background/client";
 
+/** _server component_ */
 export default function Background() {
   return (
     <div className="w-full h-full absolute inset-0 z-[-1]">

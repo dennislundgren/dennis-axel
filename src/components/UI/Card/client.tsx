@@ -3,6 +3,7 @@
 import * as motion from "motion/react-client";
 import React from "react";
 
+/** _client component_ */
 export default function CardWrapper({
   children,
 }: {

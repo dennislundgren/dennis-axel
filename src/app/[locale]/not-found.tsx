@@ -1,7 +1,7 @@
 import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 
-const Custom404 = () => {
+export default function Custom404() {
   return (
     <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
       <Card>
@@ -9,6 +9,4 @@ const Custom404 = () => {
       </Card>
     </main>
   );
-};
-
-export default Custom404;
+}

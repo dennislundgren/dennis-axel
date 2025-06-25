@@ -1,24 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
+/** _client component_ */
 export default function useDarkMode() {
-  const [isDark, setIsDark] = useState(false);
+  return useSyncExternalStore(subscribe, getSnapshot, () => false);
+}
 
-  useEffect(() => {
-    const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
-    setIsDark(darkMode.matches);
+function subscribe(callback: () => void) {
+  const darkMode = window.matchMedia("(prefers-color-scheme: dark)");
+  darkMode.addEventListener("change", callback);
+  return () => darkMode.removeEventListener("change", callback);
+}
 
-    const handler = (e: MediaQueryListEvent) => {
-      setIsDark(e.matches);
-    };
-
-    darkMode.addEventListener("change", handler);
-
-    return () => {
-      darkMode.removeEventListener("change", handler);
-    };
-  }, []);
-
-  return isDark;
+function getSnapshot() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
