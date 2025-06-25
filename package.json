@@ -1,10 +1,9 @@
 {
   "name": "dennis-axel",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "echo \"BUILD_DATE=$(date -u +%Y-%m-%d)\" > .env.build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
