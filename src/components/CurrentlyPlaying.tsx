@@ -1,11 +1,12 @@
 "use client";
 
+import Body from "@/components/UI/typography/Body";
 import useIsPsycho from "@/hooks/useIsPsycho";
+import fetcher from "@/lib/fetcher";
 import * as motion from "motion/react-client";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import Body from "./UI/typography/Body";
+import useSWR from "swr";
 interface SpotifyData {
   isPlaying: boolean;
   title: string;
@@ -13,40 +14,18 @@ interface SpotifyData {
   album: string;
   albumImageUrl: string;
   songUrl: string;
-  playingType?: string;
+  playingType?: "episode";
 }
 
 /** _client component_ */
 export default function CurrentlyPlaying() {
-  const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
-  const [hide, setHide] = useState(false);
+  const { data: spotifyData } = useSWR<SpotifyData>("/api/spotify", fetcher, {
+    refreshInterval: 1000,
+  });
+
   const isPsycho = useIsPsycho();
 
   const t = useTranslations("CurrentlyPlaying");
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    const fetchData = async () => {
-      const res = await fetch("/api/spotify");
-      const data = await res.json();
-
-      if (!data.isPlaying) {
-        setHide(true);
-        setTimeout(() => {
-          setSpotifyData(null);
-        }, 1000);
-      } else {
-        setHide(false);
-        setSpotifyData(data);
-      }
-    };
-
-    fetchData();
-    interval = setInterval(fetchData, 10000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const {
     isPlaying = false,
@@ -58,39 +37,7 @@ export default function CurrentlyPlaying() {
     playingType = "",
   } = spotifyData || {};
 
-  if (!isPlaying || isPsycho) return null;
-
-  if (isPlaying && playingType === "episode")
-    return (
-      <motion.div
-        initial={{
-          opacity: 0,
-          marginTop: "-5rem",
-        }}
-        animate={
-          hide
-            ? {
-                opacity: 0,
-                marginTop: "-4.5rem",
-              }
-            : {
-                opacity: 1,
-                marginTop: 0,
-                transition: {
-                  duration: 1,
-                  ease: "easeIn",
-                  marginTop: {
-                    duration: 0.33,
-                    ease: "easeOut",
-                  },
-                },
-              }
-        }
-        className="flex gap-4 items-center max-w-md"
-      >
-        <Body>{t("listening")} podcast</Body>
-      </motion.div>
-    );
+  if (isPsycho) return null;
 
   return (
     <motion.div
@@ -99,7 +46,7 @@ export default function CurrentlyPlaying() {
         marginTop: "-5rem",
       }}
       animate={
-        hide
+        !isPlaying
           ? {
               opacity: 0,
               marginTop: "-4.5rem",
@@ -129,7 +76,11 @@ export default function CurrentlyPlaying() {
         />
       )}
       <Body>
-        {isPlaying ? t("listening") + " " : " "}
+        {isPlaying
+          ? playingType === "episode"
+            ? t("listening") + "  podcast"
+            : t("listening") + " "
+          : " "}
         <a
           href={songUrl}
           className="hover:underline"

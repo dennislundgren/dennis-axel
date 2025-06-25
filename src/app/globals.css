@@ -43,6 +43,46 @@ body {
 }
 
 @layer utilities {
+  .horizontal-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--background-alt-rgb)) 20%,
+      rgb(var(--background-alt-rgb)) 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--background-alt-rgb)) 20%,
+      rgb(var(--background-alt-rgb)) 80%,
+      transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+  .vertical-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-alt-rgb)) 20%,
+      rgb(var(--background-alt-rgb)) 80%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-alt-rgb)) 20%,
+      rgb(var(--background-alt-rgb)) 80%,
+      transparent 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
   .bg-blur {
     background: rgba(var(--background-rgb), 0.16);
     backdrop-filter: blur(66px);

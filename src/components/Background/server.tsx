@@ -15,14 +15,7 @@ export default function Background() {
 
 function VerticalMask({ children }: { children?: React.ReactNode }) {
   return (
-    <div
-      style={{
-        WebkitMaskImage: `linear-gradient(to right, transparent, rgb(var(--background-alt-rgb)) 20%, rgb(var(--background-alt-rgb)) 80%, transparent 100%)`,
-        WebkitMaskRepeat: "no-repeat",
-        WebkitMaskSize: "100% 100%",
-      }}
-      className="w-full h-full absolute inset-0"
-    >
+    <div className="w-full h-full absolute inset-0 vertical-mask">
       {children}
     </div>
   );
@@ -30,14 +23,7 @@ function VerticalMask({ children }: { children?: React.ReactNode }) {
 
 function HorizontalMask({ children }: { children?: React.ReactNode }) {
   return (
-    <div
-      style={{
-        WebkitMaskImage: `linear-gradient(to bottom, transparent, rgb(var(--background-alt-rgb)) 20%, rgb(var(--background-alt-rgb)) 80%, transparent 100%)`,
-        WebkitMaskRepeat: "no-repeat",
-        WebkitMaskSize: "100% 100%",
-      }}
-      className="w-full h-full absolute inset-0"
-    >
+    <div className="w-full h-full absolute inset-0 horizontal-mask">
       {children}
     </div>
   );
