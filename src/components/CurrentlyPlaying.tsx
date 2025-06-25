@@ -81,16 +81,18 @@ export default function CurrentlyPlaying() {
             ? t("listening") + "  podcast"
             : t("listening") + " "
           : " "}
-        <a
-          href={songUrl}
-          className="hover:underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <strong>{isPlaying && title && <>{title}</>}</strong>
-          {isPlaying ? " " + t("by") + " " : ""}
-          {isPlaying && artist && <>{artist}</>}
-        </a>
+        {isPlaying && playingType !== "episode" ? (
+          <a
+            href={songUrl}
+            className="hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <strong>{isPlaying && title && <>{title}</>}</strong>
+            {isPlaying ? " " + t("by") + " " : ""}
+            {isPlaying && artist && <>{artist}</>}
+          </a>
+        ) : null}
       </Body>
     </motion.div>
   );
