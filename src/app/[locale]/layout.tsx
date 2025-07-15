@@ -1,4 +1,5 @@
 import Background from "@/components/Background";
+import CookieManager from "@/components/CookieManager";
 import LanguageSelector from "@/components/LanguageSelector";
 import Version from "@/components/Version";
 import { routing } from "@/i18n/routing";
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
           <Background />
           <LanguageSelector />
           <Version />
+          <CookieManager />
         </NextIntlClientProvider>
       </body>
     </html>

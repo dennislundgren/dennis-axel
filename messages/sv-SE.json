@@ -16,7 +16,12 @@
     "fi-FI": "Finska | Suomi"
   },
   "Metadata": {
-    "title": "dennis axel | Svenska",
+    "title": "dennis axel",
     "description": "Dennis Axel Lundgren är en frontend-utvecklare och kreatör baserad i Stockholm, Sverige. Han skapar intuitiva och interaktiva upplevelser."
+  },
+  "CookieManager": {
+    "consent_none": "Cookies är inaktiverade för denna sida",
+    "consent_all": "Alla cookies är godkända",
+    "consent_functional": "Endast funktionella cookies är tillåtna"
   }
 }

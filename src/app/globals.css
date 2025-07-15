@@ -12,7 +12,7 @@
   --x: 0px;
   --y: 0px;
 
-  --mask-size: 1440px;
+  --mask-size: 100vw;
   --r: calc(var(--mask-size) / 2);
 }
 

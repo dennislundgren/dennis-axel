@@ -1,10 +1,10 @@
 import Card from "@/components/Card";
 import Body from "@/components/UI/typography/Body";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 /** _server component_ */
-export default function Content() {
-  const t = useTranslations("HomePage");
+export default async function Content() {
+  const t = await getTranslations("HomePage");
 
   return (
     <Card>

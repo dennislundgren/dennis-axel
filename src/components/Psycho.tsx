@@ -1,8 +1,8 @@
 import Body from "@/components/UI/typography/Body";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 /** _server component_ */
-export default function Psycho() {
-  const t = useTranslations("HomePage");
+export default async function Psycho() {
+  const t = await getTranslations("HomePage");
   return <Body>{t("psycho")}</Body>;
 }

@@ -1,8 +1,7 @@
 "use client";
 
 import Surface from "@/components/UI/Surface";
-import useDarkMode from "@/hooks/useDarkMode";
-import { usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -11,9 +10,9 @@ import { useState } from "react";
 /** _client component_ */
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState(false);
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
-  const isDark = useDarkMode();
   const router = useRouter();
   const currentLocale = useLocale();
 
@@ -29,22 +28,22 @@ export default function LanguageSelector() {
       </div>
       {isOpen && (
         <div className="flex flex-col p-2 rounded-lg items-end gap-1">
-          <Surface className="px-3 py-2">
+          <Surface className="px-3 py-2 flex flex-col">
             {routing.locales.map((targetLocale) => (
-              <div
+              <Link
+                href={path}
+                locale={targetLocale}
                 key={targetLocale}
                 className={
                   currentLocale === targetLocale
                     ? "cursor-pointer hidden"
                     : "cursor-pointer hover:underline"
                 }
-                onClick={() => {
-                  setIsOpen(false);
-                  router.replace(path, { locale: targetLocale });
-                }}
+                prefetch={active ? null : false}
+                onMouseEnter={() => setActive(true)}
               >
                 {t(targetLocale)}
-              </div>
+              </Link>
             ))}
           </Surface>
         </div>
