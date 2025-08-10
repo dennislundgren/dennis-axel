@@ -1,11 +1,8 @@
+import { NextConfig } from "next";
 const createNextIntlPlugin = require("next-intl/plugin");
-const { version } = require("./package.json");
-
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
-
-const nextConfig = {
+const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
   },
@@ -26,4 +23,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextIntl(nextConfig);
+export default withNextIntl(nextConfig);
