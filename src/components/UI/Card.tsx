@@ -1,4 +1,4 @@
-import Surface from "@/components/ui/Surface";
+import Surface from "@/components/UI/Surface";
 
 interface Props {
   children: React.ReactNode;

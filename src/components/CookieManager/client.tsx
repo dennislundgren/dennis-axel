@@ -1,7 +1,7 @@
 "use client";
 
-import SmallCard from "@/components/ui/SmallCard";
-import { Meta } from "@/components/ui/Texts";
+import SmallCard from "@/components/UI/SmallCard";
+import { Meta } from "@/components/UI/Texts";
 import useCookieManager from "@/hooks/useCookieManager";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";

@@ -1,5 +1,5 @@
-import Card from "@/components/ui/Card";
-import { Body } from "@/components/ui/Texts";
+import Card from "@/components/UI/Card";
+import { Body } from "@/components/UI/Texts";
 import { getTranslations } from "next-intl/server";
 
 export default async function CardContent() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { Body } from "@/components/ui/Texts";
+import { Body } from "@/components/UI/Texts";
 import useIsPsycho from "@/hooks/useIsPsycho";
 import fetcher from "@/lib/fetcher";
 import { SpotifyData } from "@/types/spotify";

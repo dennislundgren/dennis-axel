@@ -1,6 +1,6 @@
 "use client";
 
-import Surface from "@/components/ui/Surface";
+import Surface from "@/components/UI/Surface";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
