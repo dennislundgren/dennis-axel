@@ -2,10 +2,10 @@
 
 import dynamic from "next/dynamic";
 
-const Client = dynamic(() => import("./client"), {
+const LanguageSelectorClient = dynamic(() => import("./client"), {
   ssr: false,
 });
 
 export default function LanguageSelector() {
-  return <Client />;
+  return <LanguageSelectorClient />;
 }

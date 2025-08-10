@@ -2,10 +2,10 @@
 
 import dynamic from "next/dynamic";
 
-const Client = dynamic(() => import("./client"), {
+const CookieManagerClient = dynamic(() => import("./client"), {
   ssr: false,
 });
 
 export default function CookieManager() {
-  return <Client />;
+  return <CookieManagerClient />;
 }
