@@ -1,4 +1,5 @@
 import BackgroundTouchMask from "@/components/Background/client";
+import { memo } from "react";
 
 interface Props {
   children?: React.ReactNode;
@@ -20,7 +21,7 @@ function HorizontalMask({ children }: Props) {
   );
 }
 
-export default function Background() {
+export default memo(function Background() {
   return (
     <div className="w-full h-full absolute inset-0 z-[-1]">
       <VerticalMask>
@@ -30,4 +31,4 @@ export default function Background() {
       </VerticalMask>
     </div>
   );
-}
+});
