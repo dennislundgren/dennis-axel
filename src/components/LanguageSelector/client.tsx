@@ -1,15 +1,14 @@
 "use client";
 
-import Surface from "@/components/UI/Surface";
+import Surface from "@/components/ui/Surface";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
-export default function LanguageSelector() {
+export default function LanguageSelectorClient() {
   const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState(false);
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
   const currentLocale = useLocale();
@@ -37,8 +36,7 @@ export default function LanguageSelector() {
                     ? "cursor-pointer hidden"
                     : "cursor-pointer hover:underline"
                 }
-                prefetch={active ? null : false}
-                onMouseEnter={() => setActive(true)}
+                prefetch
               >
                 {t(targetLocale)}
               </Link>

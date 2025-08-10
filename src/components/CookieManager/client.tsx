@@ -1,12 +1,12 @@
 "use client";
 
-import SmallCard from "@/components/UI/SmallCard";
-import Meta from "@/components/UI/typography/Meta";
+import SmallCard from "@/components/ui/SmallCard";
+import { Meta } from "@/components/ui/Texts";
 import useCookieManager from "@/hooks/useCookieManager";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-export default function CookieManager() {
+export default function CookieManagerClient() {
   const [showConsent, setShowConsent] = useState(false);
   const { consent } = useCookieManager();
   const t = useTranslations("CookieManager");

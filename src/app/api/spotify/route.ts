@@ -1,3 +1,5 @@
+import { SpotifyDataSchema } from "@/types/spotify";
+
 const client_id = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID!;
 const client_secret = process.env.NEXT_SPOTIFY_CLIENT_SECRET!;
 const refresh_token = process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN!;
@@ -41,6 +43,8 @@ export async function GET() {
     },
   });
 
+  if (!response.ok) throw new Error(`Spotify API error ${response.status}`);
+
   if (response.status === 204 || response.status > 400) {
     cachedSpotifyData = { isPlaying: false };
     cachedAt = now;
@@ -49,19 +53,26 @@ export async function GET() {
 
   const song = await response.json();
 
-  cachedSpotifyData = {
-    isPlaying: song.is_playing,
-    title: song.item?.name,
-    artist: song.item?.artists
-      .map((artist: { name: string }) => artist.name)
-      .join(", "),
-    album: song.item?.album.name,
-    albumImageUrl: song.item?.album.images[0].url,
-    songUrl: song.item?.external_urls.spotify,
-    playingType: song.currently_playing_type,
-  };
+  const parsed = SpotifyDataSchema.safeParse(
+    (cachedSpotifyData = {
+      isPlaying: song.is_playing,
+      title: song.item?.name,
+      artist: song.item?.artists
+        .map((artist: { name: string }) => artist.name)
+        .join(", "),
+      album: song.item?.album.name,
+      albumImageUrl: song.item?.album.images[0].url,
+      songUrl: song.item?.external_urls.spotify,
+      playingType: song.currently_playing_type,
+    })
+  );
+
+  if (!parsed.success) {
+    console.log("Invalid Spotify data");
+    throw new Error("Spotify validation data failed", parsed.error);
+  }
 
   cachedAt = now;
 
-  return Response.json(cachedSpotifyData);
+  return Response.json(parsed);
 }

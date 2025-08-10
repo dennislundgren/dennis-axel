@@ -1,22 +1,14 @@
 "use client";
 
-import Body from "@/components/UI/typography/Body";
+import { Body } from "@/components/ui/Texts";
 import useIsPsycho from "@/hooks/useIsPsycho";
 import fetcher from "@/lib/fetcher";
+import { SpotifyData } from "@/types/spotify";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import useSWR from "swr";
-interface SpotifyData {
-  isPlaying: boolean;
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  songUrl: string;
-  playingType?: "episode";
-}
 
-export default function CurrentlyPlaying() {
+export default function CurrentlyPlayingClient() {
   const { data: spotifyData } = useSWR<SpotifyData>("/api/spotify", fetcher, {
     refreshInterval: 30000,
   });

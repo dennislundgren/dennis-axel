@@ -1,4 +1,4 @@
-import Meta from "@/components/UI/typography/Meta";
+import { Meta } from "@/components/ui/Texts";
 import { getAppVersion } from "@/lib/version";
 import { History, Rocket } from "lucide-react";
 

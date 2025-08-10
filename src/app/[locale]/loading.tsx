@@ -1,5 +1,5 @@
-import Card from "@/components/UI/Card";
-import Body from "@/components/UI/typography/Body";
+import Card from "@/components/ui/Card";
+import { Body } from "@/components/ui/Texts";
 
 export default function Loading() {
   return (

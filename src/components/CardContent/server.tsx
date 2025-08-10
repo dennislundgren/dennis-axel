@@ -1,9 +1,8 @@
-import Card from "@/components/UI/Card";
-import Body from "@/components/UI/typography/Body";
+import Card from "@/components/ui/Card";
+import { Body } from "@/components/ui/Texts";
 import { getTranslations } from "next-intl/server";
-import { memo } from "react";
 
-export default memo(async function Content() {
+export default async function CardContent() {
   const t = await getTranslations("HomePage");
 
   return (
@@ -13,4 +12,4 @@ export default memo(async function Content() {
       <Body>{t("statement2")}</Body>
     </Card>
   );
-});
+}

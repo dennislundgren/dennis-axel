@@ -1,79 +1,23 @@
-import Background from "@/components/Background";
-import CookieManager from "@/components/CookieManager";
-import LanguageSelector from "@/components/LanguageSelector";
-import Version from "@/components/Version";
+import LocaleLayoutShell from "@/components/LocaleLayoutShell";
 import { routing } from "@/i18n/routing";
 import { Locales } from "@/types/global";
-import { Metadata } from "next";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "./../globals.css";
 
-export async function generateStaticParams() {
-  return routing.locales.map((locale) => ({
-    locale,
-  }));
-}
+export { generateStaticParams } from "@/lib/generateStaticParams";
+export { generateMetadata } from "@/lib/metadata";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locales }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Metadata" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    authors: {
-      name: "Dennis Axel Lundgren",
-    },
-    creator: "Dennis Axel Lundgren",
-    alternates: {
-      canonical: `https://dennisaxel.com/${locale}`,
-      languages: {
-        "x-default": "https://dennisaxel.com",
-        [locale]: `https://dennisaxel.com/${locale}`,
-      },
-    },
-    openGraph: {
-      title: t("title"),
-      description: t("description"),
-      url: `https://dennisaxel.com/${locale}`,
-      siteName: "Dennis Axel Lundgren",
-      type: "website",
-    },
-  };
-}
-
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
+interface Props {
   children: React.ReactNode;
   params: Promise<{ locale: Locales }>;
-}) {
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
+  if (!hasLocale(routing.locales, locale)) notFound();
 
   setRequestLocale(locale);
-
-  return (
-    <html lang={locale}>
-      <body>
-        <NextIntlClientProvider>
-          {children}
-
-          <Background />
-          <LanguageSelector />
-          <Version />
-          <CookieManager />
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+  return <LocaleLayoutShell locale={locale}>{children}</LocaleLayoutShell>;
 }

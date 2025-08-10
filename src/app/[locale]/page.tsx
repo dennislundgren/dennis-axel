@@ -1,12 +1,12 @@
-import Content from "@/components/Content";
-import CurrentlyPlaying from "@/components/CurrentlyPlayingWrapper";
+import CardContent from "@/components/CardContent";
+import CurrentlyPlaying from "@/components/CurrentlyPlaying";
 import { setRequestLocale } from "next-intl/server";
 
-export default async function Home({
-  params,
-}: {
+interface Props {
   params: Promise<{ locale: string }>;
-}) {
+}
+
+export default async function Home({ params }: Props) {
   const { locale } = await params;
 
   setRequestLocale(locale);
@@ -14,7 +14,7 @@ export default async function Home({
   return (
     <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
       <div className="relative">
-        <Content />
+        <CardContent />
         <CurrentlyPlaying />
       </div>
     </main>
