@@ -16,11 +16,8 @@ interface Props {
 }
 
 export default async function LocaleLayout({ children, params }: Props) {
-  console.log("Layout rendered\t", Date.now());
-
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-
   setRequestLocale(locale);
 
   return <LocaleLayoutShell locale={locale}>{children}</LocaleLayoutShell>;

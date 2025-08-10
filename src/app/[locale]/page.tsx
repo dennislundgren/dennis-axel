@@ -7,9 +7,7 @@ interface Props {
 }
 
 export default async function Home({ params }: Props) {
-  console.log("Page rendered\t", Date.now());
   const { locale } = await params;
-
   setRequestLocale(locale);
 
   return (
