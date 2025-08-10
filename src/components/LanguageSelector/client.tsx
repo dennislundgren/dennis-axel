@@ -1,7 +1,7 @@
 "use client";
 
 import Surface from "@/components/UI/Surface";
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -10,7 +10,6 @@ import { useState } from "react";
 export default function LanguageSelectorClient() {
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("LanguageSelector");
-  const path = usePathname();
   const currentLocale = useLocale();
 
   return (
@@ -28,7 +27,7 @@ export default function LanguageSelectorClient() {
           <Surface className="px-3 py-2 flex flex-col">
             {routing.locales.map((targetLocale) => (
               <Link
-                href={path}
+                href="/"
                 locale={targetLocale}
                 key={targetLocale}
                 className={
