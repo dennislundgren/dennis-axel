@@ -2,7 +2,6 @@ import Meta from "@/components/UI/typography/Meta";
 import { getAppVersion } from "@/lib/version";
 import { History, Rocket } from "lucide-react";
 
-/** _server component_ */
 export default function Version() {
   const version = getAppVersion() || "unknown";
   const buildDate = process.env.NEXT_PUBLIC_BUILD_DATE || "unknown";

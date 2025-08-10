@@ -11,9 +11,9 @@
     "by": "av"
   },
   "LanguageSelector": {
-    "sv-SE": "Svenska | Svenska",
-    "en-GB": "Engelska | English",
-    "fi-FI": "Finska | Suomi"
+    "sv": "Svenska",
+    "en": "English",
+    "fi": "Suomi"
   },
   "Metadata": {
     "title": "dennis axel",

@@ -1,4 +1,4 @@
-import Card from "@/components/Card";
+import Card from "@/components/UI/Card";
 import Body from "@/components/UI/typography/Body";
 
 export default function Custom404() {

@@ -16,7 +16,6 @@ interface SpotifyData {
   playingType?: "episode";
 }
 
-/** _client component_ */
 export default function CurrentlyPlaying() {
   const { data: spotifyData } = useSWR<SpotifyData>("/api/spotify", fetcher, {
     refreshInterval: 30000,

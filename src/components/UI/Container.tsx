@@ -1,10 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 
-/** _server component_ */
-const Container = ({ children }: { children: React.ReactNode }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default memo(function Container({ children }: Props) {
   return (
     <div className="border border-foreground p-2 rounded-lg">{children}</div>
   );
-};
-
-export default Container;
+});

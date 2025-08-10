@@ -1,11 +1,14 @@
 import Surface from "@/components/UI/Surface";
-import React from "react";
+import { memo } from "react";
 
-/** _server component_ */
-export default function Card({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default memo(function Card({ children }: Props) {
   return (
     <Surface>
       <div className="max-w-md p-4 flex flex-col gap-4">{children}</div>
     </Surface>
   );
-}
+});

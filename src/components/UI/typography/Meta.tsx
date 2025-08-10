@@ -1,6 +1,6 @@
 import { TextProps } from "@/types/global";
+import { memo } from "react";
 
-/** _server component_ */
-export default function Meta({ children, className = "" }: TextProps) {
+export default memo(function Meta({ children, className = "" }: TextProps) {
   return <span className={`${className} text-sm`}>{children}</span>;
-}
+});

@@ -1,19 +1,17 @@
 "use client";
 
 import Surface from "@/components/UI/Surface";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
-/** _client component_ */
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState(false);
   const t = useTranslations("LanguageSelector");
   const path = usePathname();
-  const router = useRouter();
   const currentLocale = useLocale();
 
   return (

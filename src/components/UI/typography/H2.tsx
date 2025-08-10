@@ -1,6 +1,6 @@
 import { TextProps } from "@/types/global";
+import { memo } from "react";
 
-/** _server component_ */
-export default function H2({ children, className = "" }: TextProps) {
+export default memo(function H2({ children, className = "" }: TextProps) {
   return <h2 className={`${className}`}>{children}</h2>;
-}
+});

@@ -3,7 +3,6 @@
 import useTouch from "@/hooks/useTouch";
 import { useEffect, useRef } from "react";
 
-/** _client component_ */
 export default function BackgroundTouchMask() {
   const targetX = useRef(0);
   const targetY = useRef(0);

@@ -1,9 +1,9 @@
-import enGB from "../../messages/en-GB.json";
-import fiFI from "../../messages/fi-FI.json";
-import svSE from "../../messages/sv-SE.json";
+import en from "../../messages/en.json";
+import fi from "../../messages/fi.json";
+import sv from "../../messages/sv.json";
 
 export const messages = {
-  "en-GB": enGB,
-  "sv-SE": svSE,
-  "fi-FI": fiFI,
+  en: en,
+  sv: sv,
+  fi: fi,
 };

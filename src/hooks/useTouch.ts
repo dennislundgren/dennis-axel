@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-/** _client component_ */
 export default function useTouch() {
   const [isTouching, setIsTouching] = useState(false);
   const [isTouch, setIsTouch] = useState(false);

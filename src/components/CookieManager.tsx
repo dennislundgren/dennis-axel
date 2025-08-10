@@ -1,6 +1,6 @@
 "use client";
 
-import SmallCard from "@/components/SmallCard";
+import SmallCard from "@/components/UI/SmallCard";
 import Meta from "@/components/UI/typography/Meta";
 import useCookieManager from "@/hooks/useCookieManager";
 import { useTranslations } from "next-intl";

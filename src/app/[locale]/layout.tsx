@@ -67,6 +67,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           {children}
+
           <Background />
           <LanguageSelector />
           <Version />

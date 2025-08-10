@@ -11,9 +11,9 @@
     "by": "tekijä"
   },
   "LanguageSelector": {
-    "sv-SE": "Ruotsi | Svenska",
-    "en-GB": "Englanti | English",
-    "fi-FI": "Suomi | Suomi"
+    "sv": "Svenska",
+    "en": "English",
+    "fi": "Suomi"
   },
   "Metadata": {
     "title": "dennis axel",
