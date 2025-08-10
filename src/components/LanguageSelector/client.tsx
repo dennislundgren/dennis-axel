@@ -36,7 +36,6 @@ export default function LanguageSelectorClient() {
                     ? "cursor-pointer hidden"
                     : "cursor-pointer hover:underline"
                 }
-                prefetch
               >
                 {t(targetLocale)}
               </Link>

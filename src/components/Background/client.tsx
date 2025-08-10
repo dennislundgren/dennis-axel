@@ -1,7 +1,7 @@
 "use client";
 
 import useTouch from "@/hooks/useTouch";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export default function BackgroundTouchMask() {
   const targetX = useRef(0);
@@ -11,7 +11,7 @@ export default function BackgroundTouchMask() {
   const currentY = useRef(0);
 
   const { isTouch, isTouching } = useTouch();
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handlePointerMovie = (e: PointerEvent) => {
       targetX.current = e.clientX;
       targetY.current = e.clientY;
@@ -29,14 +29,12 @@ export default function BackgroundTouchMask() {
       currentX.current = lerp(currentX.current, targetX.current, 0.1);
       currentY.current = lerp(currentY.current, targetY.current, 0.1);
 
-      document.documentElement.style.setProperty(
-        "--x",
-        `${currentX.current}px`
-      );
-      document.documentElement.style.setProperty(
-        "--y",
-        `${currentY.current}px`
-      );
+      const maskComponent = document.querySelector<HTMLDivElement>(".masked");
+
+      if (!maskComponent) return null;
+
+      maskComponent?.style.setProperty("--x", `${currentX.current}px`);
+      maskComponent?.style.setProperty("--y", `${currentY.current}px`);
 
       animationFrameId = requestAnimationFrame(animate);
     };

@@ -8,12 +8,6 @@
   --highlight-rgb: 240, 240, 240;
 
   --transition-time: 0.167s;
-
-  --x: 0px;
-  --y: 0px;
-
-  --mask-size: 100vw;
-  --r: calc(var(--mask-size) / 2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,6 +87,12 @@ body {
   }
 
   .masked {
+    --x: 0px;
+    --y: 0px;
+
+    --mask-size: 100vw;
+    --r: calc(var(--mask-size) / 2);
+
     transition: opacity 0.5s ease-out;
     mask-image: radial-gradient(
       circle var(--r, 0) at calc(var(--x, 0px)) calc(var(--y, 0px)),
