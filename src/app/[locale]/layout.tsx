@@ -1,6 +1,5 @@
 import LocaleLayoutShell from "@/components/LocaleLayoutShell";
 import { routing } from "@/i18n/routing";
-import { Locales } from "@/types/global";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -12,7 +11,7 @@ export { generateMetadata } from "@/lib/metadata";
 
 interface Props {
   children: React.ReactNode;
-  params: Promise<{ locale: Locales }>;
+  params: Promise<{ locale: string }>;
 }
 
 export default async function LocaleLayout({ children, params }: Props) {

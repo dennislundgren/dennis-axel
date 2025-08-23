@@ -1,9 +1,10 @@
 import CardContent from "@/components/CardContent";
 import CurrentlyPlaying from "@/components/CurrentlyPlaying";
+import { Locales } from "@/types/global";
 import { setRequestLocale } from "next-intl/server";
 
 interface Props {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locales }>;
 }
 
 export default async function Home({ params }: Props) {
