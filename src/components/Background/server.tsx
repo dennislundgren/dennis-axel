@@ -1,4 +1,4 @@
-import BackgroundTouchMask from "@/components/Background/client";
+import { BackgroundTouchMask } from "@/components/Background/dynamic";
 
 interface Props {
   children?: React.ReactNode;

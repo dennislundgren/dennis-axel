@@ -7,7 +7,7 @@ export const SpotifyDataSchema = z.object({
   album: z.string(),
   albumImageUrl: z.url(),
   songUrl: z.url(),
-  playingType: z.enum(["episode"]).optional(),
+  playingType: z.enum(["episode", "track"]).optional(),
 });
 
 export type SpotifyData = z.infer<typeof SpotifyDataSchema>;
