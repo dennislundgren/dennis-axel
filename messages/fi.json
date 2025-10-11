@@ -1,9 +1,10 @@
 {
   "HomePage": {
     "title": "Hei",
-    "statement1": "Nimeni on Dennis Axel Lundgren. Olen luoja, syntynyt ja kasvanut Tukholmassa. Tällä hetkellä työskentelen frontend-kehittäjänä Perific Technologies AB:lla.",
+    "statement1": "Nimeni on Dennis Axel Lundgren. Olen frontend-kehittäjä, syntynyt ja kasvanut Tukholmassa.",
     "statement2": "Minua ohjaa tarkoituksellinen luominen intuitiiviseen vuorovaikutukseen.",
-    "psycho": "Olet ihan hullu, kun käytät näyttöjä noin."
+    "psycho": "Olet ihan hullu, kun käytät näyttöjä noin.",
+    "developer": "dennis axel, sovellus- ja web-kehittäjä"
   },
   "CurrentlyPlaying": {
     "listening": "Kuuntelen",

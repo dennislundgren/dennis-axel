@@ -7,9 +7,7 @@ export default async function CardContent() {
 
   return (
     <Card>
-      <Body>{t("title")},</Body>
-      <Body>{t("statement1")}</Body>
-      <Body>{t("statement2")}</Body>
+      <Body>{t("developer")}</Body>
     </Card>
   );
 }

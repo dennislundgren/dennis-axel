@@ -1,9 +1,10 @@
 {
   "HomePage": {
     "title": "Hej",
-    "statement1": "Mitt namn är Dennis Axel Lundgren. Jag är en kreatör, född och uppväxt i Stockholm. Just nu arbetar jag som frontend-utvecklare på Perific Technologies AB.",
+    "statement1": "Mitt namn är Dennis Axel Lundgren. Jag är en frontend-utvecklare, född och uppväxt i Stockholm.",
     "statement2": "Jag drivs av avsiktligt skapandet för intuitiv interaktivitet.",
-    "psycho": "Psycho som använder skärmar på det här sättet."
+    "psycho": "Psycho som använder skärmar på det här sättet.",
+    "developer": "dennis axel, app- och webbutvecklare"
   },
   "CurrentlyPlaying": {
     "listening": "Lyssnar på",
