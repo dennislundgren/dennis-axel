@@ -40,7 +40,7 @@ export default function LanguageSelectorClient() {
             {routing.locales.map((targetLocale, i) => (
               <Link
                 href="/"
-                // locale={targetLocale}
+                locale={targetLocale}
                 key={i}
                 className={clsx(
                   currentLocale === targetLocale ? "hidden" : "cursor-pointer",
