@@ -1,5 +1,5 @@
 import { Background } from "@/components/Background";
-import { CookieManager } from "@/components/CookieManager";
+// import { CookieManager } from "@/components/CookieManager";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { Version } from "@/components/Version";
 import { Locales } from "@/types/global";
@@ -19,7 +19,7 @@ export function LocaleLayoutShell({ children, locale }: Props) {
 
           <Background />
           <Version />
-          <CookieManager />
+          {/* <CookieManager /> */}
           <LanguageSelector />
         </NextIntlClientProvider>
       </body>
