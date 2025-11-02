@@ -1,0 +1,19 @@
+{
+  "HomePage": {
+    "developer": "dennis axel, app- och webbutvecklare"
+  },
+  "CurrentlyPlaying": {
+    "listening": "Lyssnar på",
+    "notListening": "Lyssnar inte på något just nu",
+    "by": "av"
+  },
+  "LanguageSelector": {
+    "sv": "Svenska",
+    "en": "English",
+    "fi": "Suomi"
+  },
+  "Metadata": {
+    "title": "dennis axel",
+    "description": "App- och webbutvecklare från Stockholm."
+  }
+}

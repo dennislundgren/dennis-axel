@@ -1,0 +1,19 @@
+{
+  "HomePage": {
+    "developer": "dennis axel, app and web developer"
+  },
+  "CurrentlyPlaying": {
+    "listening": "Listening to",
+    "notListening": "Not listening to anything right now",
+    "by": "by"
+  },
+  "LanguageSelector": {
+    "sv": "Svenska",
+    "en": "English",
+    "fi": "Suomi"
+  },
+  "Metadata": {
+    "title": "dennis axel",
+    "description": "App and web developer from Stockholm."
+  }
+}

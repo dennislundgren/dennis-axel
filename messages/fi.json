@@ -1,0 +1,19 @@
+{
+  "HomePage": {
+    "developer": "dennis axel, sovellus- ja web-kehittäjä"
+  },
+  "CurrentlyPlaying": {
+    "listening": "Kuuntelen",
+    "notListening": "En kuuntele mitään juuri nyt",
+    "by": "tekijä"
+  },
+  "LanguageSelector": {
+    "sv": "Svenska",
+    "en": "English",
+    "fi": "Suomi"
+  },
+  "Metadata": {
+    "title": "dennis axel",
+    "description": "Sovellus- ja web-kehittäjä Tukholmasta."
+  }
+}
