@@ -1,6 +1,6 @@
 {
   "name": "dennis-axel",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -11,7 +11,6 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "lucide-react": "^0.511.0",
-    "my-first-pkg": "file:../../NPM Packages/my-first-pkg",
     "next": "^15.3.2",
     "next-intl": "^4.1.0",
     "react": "^19.1.0",
