@@ -1,6 +1,6 @@
 {
   "name": "dennis-axel",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "cookie-manager": "file:../../NPM Packages/cookie-manager",
     "lucide-react": "^0.511.0",
     "my-first-pkg": "file:../../NPM Packages/my-first-pkg",
     "next": "^15.3.2",
