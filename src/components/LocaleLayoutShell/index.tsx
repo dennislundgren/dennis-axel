@@ -1,16 +1,16 @@
-import Background from "@/components/Background";
-import CookieManager from "@/components/CookieManager";
-import LanguageSelector from "@/components/LanguageSelector/client";
-import Version from "@/components/Version/server";
+import { Background } from "@/components/Background";
+import { CookieManager } from "@/components/CookieManager";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { Version } from "@/components/Version";
 import { Locales } from "@/types/global";
 import { NextIntlClientProvider } from "next-intl";
+import type { PropsWithChildren } from "react";
 
-interface Props {
-  children: React.ReactNode;
+interface Props extends PropsWithChildren {
   locale: Locales;
 }
 
-export default function LocaleLayoutShell({ children, locale }: Props) {
+export function LocaleLayoutShell({ children, locale }: Props) {
   return (
     <html lang={locale}>
       <body>

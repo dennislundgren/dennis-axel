@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
-export default function useDarkMode() {
+export function useDarkMode() {
   return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
 

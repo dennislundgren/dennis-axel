@@ -1,10 +1,7 @@
-import { BackgroundTouchMask } from "@/components/Background/dynamic";
+import { BackgroundTouchMask } from "@/components/Background/client";
+import type { PropsWithChildren } from "react";
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-function VerticalMask({ children }: Props) {
+function VerticalMask({ children }: PropsWithChildren) {
   return (
     <div className="w-full h-full absolute inset-0 vertical-mask">
       {children}
@@ -12,7 +9,7 @@ function VerticalMask({ children }: Props) {
   );
 }
 
-function HorizontalMask({ children }: Props) {
+function HorizontalMask({ children }: PropsWithChildren) {
   return (
     <div className="w-full h-full absolute inset-0 horizontal-mask">
       {children}
@@ -20,7 +17,7 @@ function HorizontalMask({ children }: Props) {
   );
 }
 
-export default function Background() {
+export function Background() {
   return (
     <div className="w-full h-full absolute inset-0 z-[-1]">
       <VerticalMask>

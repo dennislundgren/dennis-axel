@@ -1,10 +1,7 @@
-import Surface from "@/components/UI/Surface";
+import { Surface } from "@/components/UI/Surface";
+import type { PropsWithChildren } from "react";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function Card({ children }: Props) {
+export function Card({ children }: PropsWithChildren) {
   return (
     <Surface>
       <div className="max-w-md p-4 flex flex-col gap-4">{children}</div>

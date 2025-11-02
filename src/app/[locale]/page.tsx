@@ -1,5 +1,5 @@
-import CardContent from "@/components/CardContent";
-import CurrentlyPlaying from "@/components/CurrentlyPlaying";
+import { CardContent } from "@/components/CardContent";
+import { CurrentlyPlaying } from "@/components/CurrentlyPlaying";
 import { Locales } from "@/types/global";
 import { setRequestLocale } from "next-intl/server";
 

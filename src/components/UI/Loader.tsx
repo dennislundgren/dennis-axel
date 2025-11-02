@@ -12,14 +12,14 @@ const pulsating: Keyframe[] | PropertyIndexedKeyframes = [
   },
 ];
 
-export default function Loader() {
+export function Loader() {
   const Dot = ({ delay }: { delay: number }) => {
     const ref = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
       if (ref) {
         ref.current?.animate(pulsating, {
-          duration: 1000,
+          duration: 666,
           delay,
           iterations: Infinity,
         });
@@ -31,8 +31,8 @@ export default function Loader() {
   return (
     <Body>
       <Dot delay={0} />
+      <Dot delay={50} />
       <Dot delay={100} />
-      <Dot delay={200} />
     </Body>
   );
 }

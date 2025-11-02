@@ -1,4 +1,4 @@
-import Card from "@/components/UI/Card";
+import { Card } from "@/components/UI/Card";
 import { Body } from "@/components/UI/Texts";
 
 export default function Loading() {

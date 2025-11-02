@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
-export default function useIsPsycho() {
+export function useIsPsycho() {
   return useSyncExternalStore(subscribe, getSnapshot, () => false);
 }
 
