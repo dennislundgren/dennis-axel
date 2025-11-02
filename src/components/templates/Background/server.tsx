@@ -1,4 +1,4 @@
-import { BackgroundTouchMask } from "@/components/Background/client";
+import { BackgroundTouchMask } from "@/components/templates/Background/client";
 import type { PropsWithChildren } from "react";
 
 function VerticalMask({ children }: PropsWithChildren) {

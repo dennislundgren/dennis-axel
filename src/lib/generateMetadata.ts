@@ -1,4 +1,4 @@
-import { Locales } from "@/types/global";
+import { Locales } from "@/i18n/routing";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 

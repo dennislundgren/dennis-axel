@@ -13,7 +13,7 @@ async function getAccessToken(): Promise<{ access_token: string }> {
     method: "POST",
     headers: {
       Authorization: `Basic ${Buffer.from(
-        `${client_id}:${client_secret}`
+        `${client_id}:${client_secret}`,
       ).toString("base64")}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
@@ -64,7 +64,7 @@ export async function GET() {
       albumImageUrl: song.item?.album.images[0].url,
       songUrl: song.item?.external_urls.spotify,
       playingType: song.currently_playing_type,
-    })
+    }),
   );
 
   if (!parsed.success) {

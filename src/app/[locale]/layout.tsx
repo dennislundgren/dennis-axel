@@ -1,4 +1,4 @@
-import { LocaleLayoutShell } from "@/components/LocaleLayoutShell";
+import { LocaleLayoutShell } from "@/components/templates/LocaleLayoutShell";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -7,8 +7,8 @@ import type { PropsWithChildren } from "react";
 
 import "./../globals.css";
 
+export { generateMetadata } from "@/lib/generateMetadata";
 export { generateStaticParams } from "@/lib/generateStaticParams";
-export { generateMetadata } from "@/lib/metadata";
 
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string }>;

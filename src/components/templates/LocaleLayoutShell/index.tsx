@@ -1,8 +1,8 @@
-import { Background } from "@/components/Background";
 // import { CookieManager } from "@/components/CookieManager";
-import { LanguageSelector } from "@/components/LanguageSelector";
-import { Version } from "@/components/Version";
-import { Locales } from "@/types/global";
+import { LanguageSelector } from "@/components/organisms/LanguageSelector";
+import { Version } from "@/components/organisms/Version";
+import { Background } from "@/components/templates/Background";
+import { Locales } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 import type { PropsWithChildren } from "react";
 

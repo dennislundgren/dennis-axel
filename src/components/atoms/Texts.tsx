@@ -4,7 +4,7 @@ interface Props extends PropsWithChildren {
   className?: string;
 }
 
-export const Meta = ({ children, className = "" }: Props) => {
+export const Detail = ({ children, className = "" }: Props) => {
   return <span className={`${className} text-sm`}>{children}</span>;
 };
 
