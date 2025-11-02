@@ -59,7 +59,7 @@ function LanguageToggle({
     return () => window.removeEventListener("keydown", listener);
   }, [focused, listener]);
   return (
-    <div
+    <Surface
       tabIndex={0}
       className="p-2 rounded-lg cursor-pointer flex-col-reverse flex w-fit hover:scale-105 transition active:scale-95 focus:scale-105"
       onClick={() => {
@@ -72,8 +72,8 @@ function LanguageToggle({
         setFocused(false);
       }}
     >
-      <Languages className="dark:opacity-75" />
-    </div>
+      <Languages size={20} className="dark:opacity-75" />
+    </Surface>
   );
 }
 
@@ -86,39 +86,37 @@ function LanguagePopover() {
   const currentLocale = useLocale();
 
   return (
-    <div className="flex flex-col p-2 rounded-lg items-end gap-1">
-      <Surface
-        className={clsx(
-          "px-3 py-2 flex flex-col",
-          isLoading.some(({ loading }) => loading) && "cursor-wait select-none",
-        )}
-      >
-        {routing.locales.map((targetLocale, i) => (
-          <Link
-            href="/"
-            locale={targetLocale}
-            key={i}
-            className={clsx(
-              currentLocale === targetLocale ? "hidden" : "cursor-pointer",
-              isLoading.some(({ loading }) => loading)
-                ? "cursor-wait select-none"
-                : "hover:underline",
-            )}
-            onClick={() => {
-              !isLoading.some(({ loading }) => loading) &&
-                setIsLoading(
-                  isLoading.map((obj) =>
-                    obj.locale === targetLocale
-                      ? { loading: true, locale: targetLocale }
-                      : obj,
-                  ),
-                );
-            }}
-          >
-            {isLoading[i].loading ? <Loader /> : t(targetLocale)}
-          </Link>
-        ))}
-      </Surface>
-    </div>
+    <Surface
+      className={clsx(
+        "px-3 py-2 flex flex-col",
+        isLoading.some(({ loading }) => loading) && "cursor-wait select-none",
+      )}
+    >
+      {routing.locales.map((targetLocale, i) => (
+        <Link
+          href="/"
+          locale={targetLocale}
+          key={i}
+          className={clsx(
+            currentLocale === targetLocale ? "hidden" : "cursor-pointer",
+            isLoading.some(({ loading }) => loading)
+              ? "cursor-wait select-none"
+              : "hover:underline",
+          )}
+          onClick={() => {
+            !isLoading.some(({ loading }) => loading) &&
+              setIsLoading(
+                isLoading.map((obj) =>
+                  obj.locale === targetLocale
+                    ? { loading: true, locale: targetLocale }
+                    : obj,
+                ),
+              );
+          }}
+        >
+          {isLoading[i].loading ? <Loader /> : t(targetLocale)}
+        </Link>
+      ))}
+    </Surface>
   );
 }
