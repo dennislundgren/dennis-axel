@@ -10,7 +10,7 @@ import useSWR from "swr";
 
 export function CurrentlyPlaying() {
   const { data: spotifyData } = useSWR<SpotifyData>("/api/spotify", fetcher, {
-    refreshInterval: 30000,
+    refreshInterval: 10000,
   });
 
   if (!spotifyData) return null;

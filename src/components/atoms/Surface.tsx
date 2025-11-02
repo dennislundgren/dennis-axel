@@ -7,7 +7,7 @@ interface Props extends PropsWithChildren {
 export function Surface({ className, children }: Props) {
   return (
     <div
-      className={`transition shadow-lg rounded-lg border-foreground-dim border dark:border-transparent dark:shadow-none bg-blur ${className}`}
+      className={`transition shadow-md rounded-lg border-foreground-dim border dark:border-transparent dark:shadow-none bg-blur ${className}`}
     >
       {children}
     </div>
