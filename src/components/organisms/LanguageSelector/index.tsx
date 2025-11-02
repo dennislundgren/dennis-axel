@@ -7,7 +7,14 @@ import { Locales, routing } from "@/i18n/routing";
 import { clsx } from "clsx";
 import { Languages } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { Dispatch, PropsWithChildren, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  PropsWithChildren,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,11 +42,34 @@ function LanguageToggle({
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) {
+  const [focused, setFocused] = useState<boolean>(false);
+
+  const listener = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Enter") setIsOpen(!isOpen);
+    },
+    [isOpen, setIsOpen],
+  );
+
+  useEffect(() => {
+    if (!focused) return;
+
+    window.addEventListener("keydown", listener);
+
+    return () => window.removeEventListener("keydown", listener);
+  }, [focused, listener]);
   return (
     <div
-      className="p-2 rounded-lg cursor-pointer flex-col-reverse flex w-fit hover:scale-105 transition active:scale-95"
+      tabIndex={0}
+      className="p-2 rounded-lg cursor-pointer flex-col-reverse flex w-fit hover:scale-105 transition active:scale-95 focus:scale-105"
       onClick={() => {
         setIsOpen(!isOpen);
+      }}
+      onFocus={() => {
+        setFocused(true);
+      }}
+      onBlur={() => {
+        setFocused(false);
       }}
     >
       <Languages className="dark:opacity-75" />

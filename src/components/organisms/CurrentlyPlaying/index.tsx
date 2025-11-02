@@ -34,7 +34,7 @@ function Wrapper({
       style={{
         opacity: isPlaying ? 1 : 0,
       }}
-      className="transition-slow flex gap-4 items-center max-w-lg opacity-0 absolute bottom-[-6rem] left-0 w-full justify-center"
+      className="transition-slow flex gap-4 items-center opacity-0 absolute bottom-[-6rem] max-w-3xl w-screen justify-center translate-x-1/2 right-1/2"
     >
       {children}
     </div>

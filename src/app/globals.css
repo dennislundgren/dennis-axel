@@ -44,6 +44,10 @@ body {
   color: rgb(var(--foreground-dim-rgb));
 }
 
+*:focus {
+  outline-color: rgb(var(--foreground-rgb-dim));
+}
+
 @layer utilities {
   .horizontal-mask {
     -webkit-mask-image: linear-gradient(
