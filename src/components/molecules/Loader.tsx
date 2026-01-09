@@ -1,6 +1,6 @@
 "use client";
 
-import { Body } from "@/components/atoms";
+import { Body } from "@/components/atoms/Texts";
 import { useEffect, useRef } from "react";
 
 const pulsating: Keyframe[] | PropertyIndexedKeyframes = [

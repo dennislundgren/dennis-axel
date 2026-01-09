@@ -1,4 +1,5 @@
-import { Card, Loader } from "@/components/molecules";
+import { Card } from "@/components/molecules/Card";
+import { Loader } from "@/components/molecules/Loader";
 
 export default function Loading() {
   return (

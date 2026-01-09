@@ -1,6 +1,6 @@
-import { Body } from "@/components/atoms";
-import { Card } from "@/components/molecules";
-import { CurrentlyPlaying } from "@/components/organisms";
+import { Body } from "@/components/atoms/Texts";
+import { Card } from "@/components/molecules/Card";
+import { CurrentlyPlaying } from "@/components/organisms/CurrentlyPlaying";
 import { Locales } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 

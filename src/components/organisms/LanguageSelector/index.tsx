@@ -1,7 +1,7 @@
 "use client";
 
-import { Surface } from "@/components/atoms";
-import { Loader } from "@/components/molecules";
+import { Surface } from "@/components/atoms/Surface";
+import { Loader } from "@/components/molecules/Loader";
 import { Link } from "@/i18n/navigation";
 import { Locales, routing } from "@/i18n/routing";
 import { clsx } from "clsx";

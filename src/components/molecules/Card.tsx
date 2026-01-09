@@ -1,4 +1,4 @@
-import { Surface } from "@/components/atoms";
+import { Surface } from "@/components/atoms/Surface";
 import type { PropsWithChildren } from "react";
 
 export function Card({ children }: PropsWithChildren) {

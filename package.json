@@ -9,7 +9,9 @@
     "lint": "bun run --bun next lint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "clsx": "^2.1.1",
+    "gsap": "^3.14.2",
     "lucide-react": "^0.511.0",
     "next": "15.5.7",
     "next-intl": "^4.1.0",

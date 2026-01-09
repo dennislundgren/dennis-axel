@@ -1,4 +1,4 @@
-import { Detail } from "@/components/atoms";
+import { Detail } from "@/components/atoms/Texts";
 import { getAppVersion } from "@/lib/version";
 import { History, Rocket } from "lucide-react";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTouch } from "@/hooks";
+import { useTouch } from "@/hooks/useTouch";
 import { useLayoutEffect, useRef } from "react";
 
 export function BackgroundTouchMask() {

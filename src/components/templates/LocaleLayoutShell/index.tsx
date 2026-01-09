@@ -1,6 +1,7 @@
 import { LanguageSelector } from "@/components/organisms/LanguageSelector";
 import { Version } from "@/components/organisms/Version";
 import { Background } from "@/components/templates/Background";
+import Header from "@/components/templates/Header";
 import { Locales } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 import type { PropsWithChildren } from "react";
@@ -13,6 +14,7 @@ export function LocaleLayoutShell({ children, locale }: Props) {
   return (
     <html lang={locale}>
       <body>
+        <Header />
         <NextIntlClientProvider>
           {children}
 

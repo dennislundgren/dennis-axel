@@ -1,5 +1,7 @@
-import { LocaleLayoutShell } from "@/components/templates";
+import { LocaleLayoutShell } from "@/components/templates/LocaleLayoutShell";
 import { routing } from "@/i18n/routing";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,6 +11,8 @@ import "./../globals.css";
 
 export { generateMetadata } from "@/lib/generateMetadata";
 export { generateStaticParams } from "@/lib/generateStaticParams";
+
+gsap.registerPlugin(useGSAP);
 
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string }>;
