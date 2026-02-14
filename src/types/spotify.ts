@@ -2,11 +2,11 @@ import z from "zod";
 
 export const SpotifyDataSchema = z.object({
   isPlaying: z.boolean(),
-  title: z.string(),
-  artist: z.string(),
-  album: z.string(),
-  albumImageUrl: z.url(),
-  songUrl: z.url(),
+  title: z.optional(z.string()),
+  artist: z.optional(z.string()),
+  album: z.optional(z.string()),
+  albumImageUrl: z.optional(z.url()),
+  songUrl: z.optional(z.url()),
   playingType: z.enum(["episode", "track"]).optional(),
 });
 
