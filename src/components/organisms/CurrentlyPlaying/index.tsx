@@ -52,7 +52,7 @@ function AlbumCover({
       loading="lazy"
       fetchPriority="low"
       src={albumImageUrl}
-      alt={album}
+      alt={album ?? ""}
       width={40}
       height={40}
       className="rounded-full rotate w-10 h-10 select-none transition-slow"
