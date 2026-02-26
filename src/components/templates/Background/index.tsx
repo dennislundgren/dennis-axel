@@ -19,7 +19,7 @@ function HorizontalMask({ children }: PropsWithChildren) {
 
 export function Background() {
   return (
-    <div className="w-full h-full absolute inset-0 z-[-1] bg-zinc-50">
+    <div className="w-full h-full absolute inset-0 z-[-1] bg-zinc-50 dark:bg-zinc-950">
       <VerticalMask>
         <HorizontalMask>
           <BackgroundTouchMask />
