@@ -1,6 +1,7 @@
 import { Body } from "@/components/atoms/Texts";
 import { Card } from "@/components/molecules/Card";
 import { CurrentlyPlaying } from "@/components/organisms/CurrentlyPlaying";
+import { PageWrapper } from "@/components/templates/PageWrapper";
 import { Locales } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -13,12 +14,10 @@ export default async function Home({ params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <main className="flex min-h-full-dynamic flex-col items-center justify-center p-4 lg:p-24 gap-8">
-      <div className="relative">
-        <Content />
-        <CurrentlyPlaying />
-      </div>
-    </main>
+    <PageWrapper>
+      <Content />
+      <CurrentlyPlaying />
+    </PageWrapper>
   );
 }
 

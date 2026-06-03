@@ -2,6 +2,7 @@ import { LanguageSelector } from "@/components/organisms/LanguageSelector";
 import { Version } from "@/components/organisms/Version";
 import { Background } from "@/components/templates/Background";
 import Header from "@/components/templates/Header";
+import { DeckProvider } from "@/hooks/useDeck.hook";
 import { Locales } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 import type { PropsWithChildren } from "react";
@@ -16,11 +17,13 @@ export function LocaleLayoutShell({ children, locale }: Props) {
       <body>
         <Header />
         <NextIntlClientProvider>
-          {children}
+          <DeckProvider>
+            {children}
 
-          <Background />
-          <Version />
-          <LanguageSelector />
+            <Background />
+            <Version />
+            <LanguageSelector />
+          </DeckProvider>
         </NextIntlClientProvider>
       </body>
     </html>
